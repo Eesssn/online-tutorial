@@ -11,10 +11,8 @@ import {
   StyleSheet
 } from 'react-native';
 
-
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
 import HomeScreen from './src/pages/intro/AppIntro';
 import DetailsScreen from './src/pages/signup/SignUp';
 import MasterScreen from './src/pages/Home/Master';
@@ -35,22 +33,17 @@ const RootStack = createStackNavigator(
     headerMode: 'screen'
   }
 );
-const HomeTabNavigator = createBottomTabNavigator({
-  home: Home,
-  recipe: Recipe
-})
+const AppContainer = createAppContainer(RootStack);
 
-const AppStack = createStackNavigator({
-  main: HomeTabNavigator
-}, {
-  initialRouteName: 'main',
-  header: null,
-  headerMode: 'none'
+class App extends React.Component{
+  render(){
+    return <AppContainer />;
+  }
+  
+};
+
+const styles = StyleSheet.create({
+  
 });
 
-export default createSwitchNavigator({
-  auth: RootStack ,
-  app: AppStack
-}, {
-  initialRouteName: 'auth',
-});
+export default App;
