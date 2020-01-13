@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.5",
     "@react-native-community/viewpager": "^3.3.0",
+    "fluidbottomnavigation-rn": "^0.1.1",
     "moment-jalaali": "^0.9.1",
     "persify": "^1.0.3",
     "react": "16.9.0",
@@ -23,6 +24,7 @@
     "react-native-reanimated": "^1.4.0",
     "react-native-safe-area-context": "^0.6.2",
     "react-native-screens": "^2.0.0-alpha.22",
+    "react-native-view-overflow": "^0.0.4",
     "react-navigation": "^4.0.10",
     "react-navigation-stack": "^2.0.12",
     "react-navigation-tabs": "^2.7.0"
