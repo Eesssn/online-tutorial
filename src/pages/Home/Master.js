@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {StyleSheet ,Properties,Image ,TextInput ,Text ,View , TouchableOpacity,Dimensions} from 'react-native'
 import TabBar from "fluidbottomnavigation-rn";
 import ViewPager from '@react-native-community/viewpager';
-import MasterHeader from './MasterHeader';
+import Home from './view/Home'
 
 
 
@@ -27,7 +27,7 @@ class Master extends Component{
                   <View ><Text>blog</Text></View>
                   </View>
                   <View key="2">
-                  <View ><Text>home</Text></View>
+                  <View ><Home/></View>
                   </View>
                   <View key="3">
                   <View ><Text>groduated</Text></View>

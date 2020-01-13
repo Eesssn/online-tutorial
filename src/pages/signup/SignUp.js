@@ -38,7 +38,7 @@ class SingUp extends Component {
         })
     }
     onPressLogin = ()=>{
-        this.props.navigation.navigate('main')
+        this.props.navigation.navigate('Master')
     }
     onPressSignUp = ()=>{
         this.props.navigation.navigate('Form')
