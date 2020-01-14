@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: "space-between",
       alignItems: "center",
-      backgroundColor: "#b5d1c4"
+      backgroundColor: "#f2f2f2"
     },
   
     pageStyle: {
