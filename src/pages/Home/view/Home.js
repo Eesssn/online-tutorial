@@ -1,7 +1,7 @@
 import React from 'react';
-import { Dimensions, View ,Text ,TouchableOpacity ,ScrollView ,StyleSheet,Image,TextInput,FlatList ,I18nManager } from 'react-native'
+import { Dimensions, View ,Text ,TouchableOpacity  ,StyleSheet,Image,TextInput,FlatList ,I18nManager } from 'react-native'
 import { withNavigation } from 'react-navigation';
-
+import persify from "persify"
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -23,7 +23,20 @@ class Home extends React.Component{
             hederChatName:[
                 {id: 0 , chatname:'چرا آمازون |دوره آموزشی حرفه ای آمازون وکسب در آمد', notifmod: 1},
                 {id: 1 , chatname:'چرا آمازون |دوره آموزشی حرفه ای آمازون وکسب در آمد', notifmod: 0},
+            ],
+            offer:[
+                {id:0 , src: require('../../../../assets/img/youroffer/1.jpg') , isoffer :1},
+                {id:1 , src: require('../../../../assets/img/youroffer/2.jpg') , isoffer :0},
+                {id:2 , src: require('../../../../assets/img/youroffer/3.jpg') , isoffer :0},
+                {id:3 , src: require('../../../../assets/img/youroffer/4.jpg') , isoffer :1},
+            ],
+            SuggestedSourses:[
+                {id:0 , src: require('../../../../assets/img/suggest/1.jpg') , numbrof :5 , title:"چرا آمازون", teacher :"استادحسینی",price : 350000},
+                {id:1 , src: require('../../../../assets/img/suggest/2.jpg') ,  numbrof :5 , title:"چرا آمازون", teacher :"استادحسینی",price : 0},
+                {id:2 , src: require('../../../../assets/img/suggest/3.jpg') ,  numbrof :5 , title:"چرا آمازون", teacher :"استادحسینی",price : 350000},
+                {id:3 , src: require('../../../../assets/img/suggest/4.jpg') ,  numbrof :5 , title:"چرا آمازون", teacher :"استادحسینی",price : 0},
             ]
+
         }
        
        
@@ -169,7 +182,7 @@ class Home extends React.Component{
                                                                                        
                   
                                     </View>
-                                    <View style={{alignItems:"center", flexDirection:"column", marginTop:8, height:180, width:SCREEN_WIDTH}}>
+                                    <View style={{alignItems:"center", flexDirection:"column", marginTop:2, height:115, width:SCREEN_WIDTH}}>
                                         {/* your offer */}
                                         
                                                 <View style={{ width:SCREEN_WIDTH+10}}>
@@ -177,18 +190,75 @@ class Home extends React.Component{
                                                         <Text style={{marginHorizontal:10, color:'#251A51',fontFamily:"IRANSansWeb",}}>پیشنهاد به شما</Text>
                                                     </View>
 
-                                                    <View style={{marginLeft:5, width:SCREEN_WIDTH,height:93 ,marginTop:4,backgroundColor: '#2356'}}>
-                                                    <ScrollView horizontal style={{ flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row' }}>
-                                                    <View style={{ width: 150, height: 100, backgroundColor: '#12a19e' }}><Text>1</Text></View>
-                                                    <View style={{ width: 150, height: 100, backgroundColor: '#f45b21' }}><Text>2</Text></View>
-                                                    <View style={{ width: 150, height: 100, backgroundColor: '#640fe7' }}><Text>3</Text></View>
-                                                    <View style={{ width: 150, height: 100, backgroundColor: '#8f5e3e' }}><Text>4</Text></View>
-                                                    <View style={{ width: 150, height: 100, backgroundColor: '#f4bd15' }}><Text>5</Text></View>
-                                                    <View style={{ width: 150, height: 100, backgroundColor: '#137cf9' }}><Text>6</Text></View>
-                                                    </ScrollView>
+                                                    <View style={{marginLeft:5, width:SCREEN_WIDTH,height:90 ,marginTop:4}}>
+                                                        <View style={styles.list}>
+                                                            <FlatList 
+                                                            showsHorizontalScrollIndicator={false}
+                                                            inverted={true}
+                                                            data={this.state.offer}
+                                                            contentContainerStyle={{alignItems:'center', justifyContent:'center'}}
+                                                            keyExtractor={(item,index)=> index.toString()}
+                                                            horizontal
+                                                            renderItem ={({item})=>(
+                                                                <TouchableOpacity >
+                                                                    <Image source={item.src} style={styles.cardItem} />
+                                                                    {item.isoffer == 1 ? (
+                                                                        <View style={styles.btn_isoffer} onPress={this.onPressSignUp}>
+                                                                            <Text style={styles.offer_text}>تخفیف ویژه </Text>
+                                                                        </View>
+                                                                    ):( <></>)}
+                                                                </TouchableOpacity>
+                                                            )}
+                                                            />
+                                                        </View>
+
+
                                                     </View>
                                                 </View>
+
+                                    </View>
+                                    <View style={{alignItems:"center", flexDirection:"column", height:140, width:SCREEN_WIDTH}}>
+                                            {/* Suggested courses */}
+                                            <View style={{ width:SCREEN_WIDTH+10}}>
+                                                    <View style={{marginHorizontal: 12, alignItems:'center',flexDirection:'row-reverse', justifyContent: 'space-between',}}>
+                                                        <Text style={{marginHorizontal:10, color:'#251A51',fontFamily:"IRANSansWeb",}}>دوره های پیشنهادی</Text>
+                                                    </View>
+
+                                                    <View style={{ marginLeft:5, width:SCREEN_WIDTH,height:150 ,}}>
+                                                        <View>
+                                                            <FlatList 
+                                                            showsHorizontalScrollIndicator={false}
+                                                            inverted={true}
+                                                            data={this.state.SuggestedSourses}
+                                                            contentContainerStyle={{alignItems:'center', justifyContent:'center'}}
+                                                            keyExtractor={(item,index)=> index.toString()}
+                                                            horizontal
+                                                            renderItem ={({item})=>(
+                                                                <TouchableOpacity >
+                                                                     <Image source={item.src} style={styles.cardimage} />
+                                                                    <View style={{width :110 ,height:10}}></View>
+                                                                    <View style={{flexDirection: 'column' ,justifyContent:'center', alignContent:'center', marginTop:30, borderRadius:25, width :100 ,height: 110 , backgroundColor:"#251A5133" ,margin:8}}>
+                                                                        <Text style={styles.suggest_text2}>{item.title}</Text>
+                                                                        <Text style={styles.suggest_text}>تعداد جلسات :{item.numbrof}</Text>
+                                                                        <Text style={styles.suggest_text}>مدرس : {item.teacher}</Text>
+                                                                    </View>
+                                                                    <View style={{width :110 ,height:20}}></View>
+                                                                    {item.price == 0 ?(<View style={styles.view_price} >
+                                                                        <Text style={styles.btn_title ,{fontFamily:"Lalezar-Regular",color:"#251A51"}}>رایگان</Text>
+                                                                    </View>):(
+                                                                        <View style={styles.view_price} >
+                                                                        <Text style={styles.btn_title,{fontSize:10, fontFamily:"IRANSansWeb", color:"#251A51"}}> { persify(item.price)} تومان</Text>
+                                                                    </View>
+                                                                    )}
+                                                                </TouchableOpacity>
+                                                            )}
+                                                            />
+                                                        </View>
+
+
+                                                    </View>
                                                 </View>
+                                    </View>
                                      
                                         
                                     
@@ -297,8 +367,79 @@ const styles = StyleSheet.create({
         shadowRadius: 3.84,
         elevation: 5,
     
-    }
-    
+    },
+    cardItem:{
+        height:80,
+        width:190,
+        alignItems:'center',
+        justifyContent:'center',
+        margin:5,
+        borderRadius : 15,
+        backgroundColor : "#ffffff",
+      },
+      btn_isoffer: {
+        width : 90,
+        height :28,
+        top: 50,
+        left:95,
+        position: "absolute",
+        borderRadius:45,
+        backgroundColor:'#FFFFFF',
+        alignItems:'center',
+        justifyContent:'center',
+        shadowColor: "#FFF",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+        },
+        offer_text:{
+            padding : 5,
+            textAlign: 'center',
+            color: '#707070',
+            fontFamily:"IRANSansWeb",
+            fontSize: 14
+        },
+        list2:{
+            
+        },
+        cardimage:{
+            height:50,
+            width:50,
+            alignItems:'center',
+            justifyContent:'center',
+            margin:5,
+            borderRadius : 17,
+            backgroundColor : "#ffffff",
+            position:'absolute', left : "25%" ,top :12
+        },
+        suggest_text:{
+            
+            textAlign: 'center',
+            color: '#251A51',
+            fontFamily:"IRANSansWeb",
+            fontSize: 10
+        },
+        suggest_text2:{
+            
+            textAlign: 'center',
+            color: '#251A51',
+            fontFamily:"IRANSansWeb",
+            fontSize: 14
+        },
+        view_price:{
+        width : 70,
+        height :18,
+        borderRadius:45,
+        backgroundColor:'#9DFB45',
+        alignItems:'center',
+        justifyContent:'center',
+        position:'absolute',
+        top:"78%",left:"20%"
+        }
 })
 
 

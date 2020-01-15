@@ -2,7 +2,8 @@ import React,{Component} from 'react';
 import {StyleSheet ,Properties,Image ,TextInput ,Text ,View , TouchableOpacity,Dimensions} from 'react-native'
 import TabBar from "fluidbottomnavigation-rn";
 import ViewPager from '@react-native-community/viewpager';
-import Home from './view/Home'
+import Home from './view/Home';
+import Profile from './view/Profile';
 
 
 
@@ -21,7 +22,7 @@ class Master extends Component{
                   style={styles.viewPager}
                   initialPage={2}>
                   <View key="0">
-                    <View><Text>Profile</Text></View>
+                    <View><Profile/></View>
                   </View>
                   <View key="1">
                   <View ><Text>blog</Text></View>
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
     },
     recentlyPlayed: {
       
-      height: Dimensions.get('window').height-100,
+      height: Dimensions.get('window').height-50,
       width: Dimensions.get('window').width
   },
   viewPager: {
