@@ -19,6 +19,8 @@ import MasterScreen from './src/pages/Home/Master';
 import FormScreen from './src/pages/formcomplet/FormCopmplet';
 import VerificationScreen from './src/pages/verification/VerificationScreen';
 import ForgetPassScreen from './src/pages/forgetpass/ForgetPass'
+import SettingScreen from './src/pages/settings/Setting';
+import BlogViewPage from './src/pages/blogpageView/BlogPageView'
 const RootStack = createStackNavigator(
   {
     Home: HomeScreen,
@@ -27,6 +29,8 @@ const RootStack = createStackNavigator(
     Form: FormScreen,
     Verification : VerificationScreen,
     Forget : ForgetPassScreen,
+    Setting : SettingScreen,
+    Blog : BlogViewPage,
   },
   {
     initialRouteName: 'Home',

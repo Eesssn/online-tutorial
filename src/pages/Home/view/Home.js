@@ -109,7 +109,7 @@ class Home extends React.Component{
                                                         <TouchableOpacity style={{padding:10, margin:6, borderRadius:20, backgroundColor:"#ffff" ,width :SCREEN_WIDTH/5 ,height : SCREEN_WIDTH/5 ,justifyContent :"center" ,alignItems:'center' ,flexDirection:"column"}}>
                                                             <Image 
                                                             source={require('../../../../assets/img/app_icons/idea.png')}
-                                                            style={{borderRadius:35/2, width:35,height:35,  alignItems: 'center' ,justifyContent: 'center',resizeMode: 'contain' ,}}
+                                                            style={{borderRadius:25/2, width:25,height:25,  alignItems: 'center' ,justifyContent: 'center',resizeMode: 'contain' ,}}
                                                             />  
                                                             <Text style={{ width :SCREEN_WIDTH/5.5,textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:10}}>{item.title}</Text>
                                                             <View style={{justifyContent: "center", width :SCREEN_WIDTH/5.5 ,padding:8,paddingTop:2, alignItems:"flex-end"}}>
@@ -162,7 +162,7 @@ class Home extends React.Component{
                                                                             <View style={{alignItems:"center",justifyContent:"center", width: 30, height: 30}} >
                                                                                 <Image 
                                                                                     source={require('../../../../assets/img/app_icons/idea.png')}
-                                                                                    style={{borderRadius:35/2, width:35,height:35,resizeMode: 'contain' ,}}
+                                                                                    style={{borderRadius:25/2, width:25,height:25,resizeMode: 'contain' ,}}
                                                                                 /> 
                                                                             </View>
                                                                         </View>

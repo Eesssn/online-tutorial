@@ -63,6 +63,7 @@ class FormComplet extends Component {
      
         const {photo,date} = this.state;
         const persiandate  =date.format('jYYYY/jMM/jDD');
+        const { navigation } = this.props;
         
         return(
             <KeyboardAwareScrollView
@@ -71,8 +72,91 @@ class FormComplet extends Component {
             contentContainerStyle={styles.container}
             scrollEnabled={false}
           >
+               {(navigation.getParam('pageName')) === "profile" ? ( <>
+        <Modal
+          style={{height: 300, width: 300}}
+            presentationStyle= ''
+            animationType="slide"
+            transparent={true}
+            visible={this.state.modalVisible}
+            onRequestClose={() => {
+                this.setModalVisible(!this.state.modalVisible);
+            }}>
+            <View style={{
+          flex: 1,
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          }}>
+              <View style={styles.card}>
 
-<Modal
+
+              <DatePicker
+              
+                showTitleDate={false}
+                onChangeDate={this.onDateChange}
+               />
+
+            <TouchableOpacity style={styles.btn_date} onPress={() => {
+                this.setModalVisible(!this.state.modalVisible);
+                console.log(this.state.date)
+                
+              }}>
+                <Text style={styles.btn_title}> ثبت </Text>
+            </TouchableOpacity>
+
+            </View>
+            </View>
+           
+          </Modal>
+      <TouchableOpacity style={{marginBottom: 20, borderRadius:94/2, width:94,height:94, backgroundColor:'blue',  alignItems: 'center' ,justifyContent: 'center'}}
+       onPress={this.handleChosePhoto}>
+                {photo && (
+                    <Image
+                        source = {{uri: photo.uri}}
+                        style = {{width : 95 , height : 95 ,resizeMode: 'contain' , borderRadius :95/2 }}
+                        onPress={this.handleChosePhoto}
+                        />
+                )}
+            </TouchableOpacity>
+      
+    
+      <View>
+         <View><View style={styles.input_style}>
+            <Image source={require('../../../assets/img/app_icons/man.png')}  style={{width: 20, height: 20 ,  resizeMode: 'contain', marginLeft :5 ,marginRight:30}} />
+            <TextInput placeholder ='نام و نام خانوادگی' maxLength={11} style={{width: 300,textAlign: 'right',fontFamily:"IRANSansWeb"}}/>
+        </View>
+
+        <View style={styles.input_style}>
+            <Image source={require('../../../assets/img/app_icons/mail.png')}  style={{width: 20, height: 20 ,  resizeMode: 'contain', marginLeft :5 ,marginRight:30}} />
+            <TextInput placeholder ='ایمیل'  keyboardType='email-address' maxLength={11} style={{width: 300,textAlign: 'right',fontFamily:"IRANSansWeb"}}/>
+        </View>
+
+        <View style={styles.input_style}>
+        <Image source={require('../../../assets/img/singup/call.png')}  style={{width: 20, height: 20 ,  resizeMode: 'contain', marginLeft :5 ,marginRight:30}} />
+            <TextInput placeholder ='شماره موبایل' keyboardType={'phone-pad'} maxLength={11} style={{width: 300,textAlign: 'right',fontFamily:"IRANSansWeb"}}/>
+        </View>
+        
+
+        <TouchableOpacity style={styles.input_style} onPress={() => {
+              this.setModalVisible(true);
+            }}>
+            <Image source={require('../../../assets/img/app_icons/calendar.png')}  style={{width: 20, height: 20 ,  resizeMode: 'contain', marginLeft :5 ,marginRight:30}} />
+            <TextInput placeholder ='تاریخ تولد' value={persiandate} editable={false} maxLength={11} style={{width: 300,textAlign: 'right',fontFamily:"IRANSansWeb"}}/>
+        </TouchableOpacity>
+
+       
+        
+    
+        <View style={styles.btn_view_style }>
+            <TouchableOpacity style={styles.btn_login} onPress={this.onPressSave}>
+                <Text style={styles.btn_title}> ذخیره </Text>
+            </TouchableOpacity>
+        </View>
+            </View>
+      </View></>):(
+        <>
+        <Modal
           style={{height: 300, width: 300}}
             presentationStyle= ''
             animationType="slide"
@@ -150,11 +234,10 @@ class FormComplet extends Component {
             </TouchableOpacity>
         </View>
             </View>
-      </View>
-      
-       
-      <View style={{ height: 60 }} />
-    </KeyboardAwareScrollView>
+      </View></>)}
+              <View style={{ height: 60 }} />
+          </KeyboardAwareScrollView>
+            
         )
     };
 }

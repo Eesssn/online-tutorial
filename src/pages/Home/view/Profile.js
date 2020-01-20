@@ -1,8 +1,8 @@
 import React from 'react';
-import { View ,Text ,TouchableOpacity ,Image,Dimensions ,StyleSheet ,I18nManager} from 'react-native';
+import { View ,Text ,TouchableOpacity ,Image,Dimensions ,StyleSheet ,Switch} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import persify from "persify"
-import { black } from 'ansi-colors';
+
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -17,10 +17,22 @@ class Profile extends React.Component{
             doing :12,
             ability : 5 ,
             passed :20,
-            name:"سارا رضایی "
+            name:"سارا رضایی ",
+            switchValue:false
         }
     
     }
+    toggleSwitch = (value) => {
+        //onValueChange of the switch this function will be called
+        this.setState({switchValue: value})
+        //state changes according to switch
+        //which will result in re-render the text
+     }
+     onPress(value){
+         if (value == 'form'){
+             this.props.navigation.navigate('Form',{pageName :'profile'});
+         }
+     }
     
     render(){
         const {name,doing,ability,passed,chatNumber} = this.state ;
@@ -55,7 +67,7 @@ class Profile extends React.Component{
                                 <Image source={require('../../../../assets/img/app_icons/chat.png')}  style={{width: 32, height: 32 ,  resizeMode: 'contain' , marginHorizontal:8}} />
                                 <View style={{ alignItems:"center",justifyContent:"center", width : 15 , height:15 , borderRadius:15/2 , backgroundColor : "#E3707F" ,position:"absolute",top:"55%",left:"60%"}}><Text style= {{fontSize:10, fontFamily:"IRANSansWeb", color:"#FFFFFF"}}>{ persify(chatNumber)}</Text></View>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{margin:15, width : 50 , height: 50 ,justifyContent:"center", alignContent:'center'}}>
+                            <TouchableOpacity style={{margin:15, width : 50 , height: 50 ,justifyContent:"center", alignContent:'center'}} onPress={() =>{ this.props.navigation.navigate('Setting')}}>
                                 <Image source={require('../../../../assets/img/app_icons/controls.png')}  style={{width: 32, height: 32 ,  resizeMode: 'contain' , marginHorizontal:8}} />
                             </TouchableOpacity>
                          </View>
@@ -89,34 +101,40 @@ class Profile extends React.Component{
                         </View>
                         {/* navigation content */}
                         <View style={styles.main_navigation}>
+                            <View>
+                                <View style={styles.no_style}>
+                                     <View style={{flex:2 ,justifyContent:"flex-start", flexDirection:'row',margin:5,alignItems:'center'}}><Text style={{textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:18 ,color:"#8AA9FC"}} ></Text></View>
+                                    <View style={{ flex:1.5 , margin : 5,flexDirection:"row-reverse" ,alignItems:'center'}}><Text style={{color:"#707070", margin:0,textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:14}} >تنظیمات کاربر</Text></View>
+                                </View>
+                            </View>
+                            <TouchableOpacity onPress={() => this.onPress('form')}>
+                                <View style={styles.nav_style}>
+                                     <View style={{flex:2 ,justifyContent:"flex-start", flexDirection:'row',margin:5,alignItems:'center'}}><Image source={require('../../../../assets/img/app_icons/next.png')} style={{ width:12,height:12,resizeMode: 'contain',margin:2 }}/></View>
+                                    <View style={{ flex:1.5 , margin : 5,flexDirection:"row-reverse" ,alignItems:'center'}}><Image source={require('../../../../assets/img/app_icons/man.png')} style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain',margin:2 }}/><Text style={{color:"#707070", margin:5,textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:14}} >اطلاعات کاربر</Text></View>
+                                </View>
+                            </TouchableOpacity>
+                            <View>
+                                <View style={styles.nav_style}>
+                                     <View style={{flex:2 ,justifyContent:"flex-start", flexDirection:'row',margin:5,alignItems:'center'}}><Switch thumbColor="#8AA9FC" onValueChange={this.toggleSwitch} value={this.state.switchValue} /></View>
+                                    <View style={{ flex:1.5 , margin : 5,flexDirection:"row-reverse" ,alignItems:'center'}}><Image source={require('../../../../assets/img/app_icons/notification.png')} style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain',margin:2 }}/><Text style={{color:"#707070", margin:5,textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:14}} >دریافت اعلانات</Text></View>
+                                </View>
+                            </View>
+                            <View>
+                                <View style={styles.no_style}>
+                                     <View style={{flex:2 ,justifyContent:"flex-start", flexDirection:'row',margin:5,alignItems:'center'}}><Text style={{textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:18 ,color:"#8AA9FC"}} ></Text></View>
+                                    <View style={{ flex:1.5 , margin : 5,flexDirection:"row-reverse" ,alignItems:'center'}}><Text style={{color:"#707070", margin:0,textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:14}} >تنظیمات نرم افزار</Text></View>
+                                </View>
+                            </View>
                             <TouchableOpacity>
                                 <View style={styles.nav_style}>
-                                     <View style={{flex:2 ,justifyContent:"flex-start", flexDirection:'row',margin:5,alignItems:'center'}}><Text style={{textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:18 ,color:"#8AA9FC"}} >{persify(passed)}</Text></View>
-                                    <View style={{ flex:1.5 , margin : 5,flexDirection:"row-reverse" ,alignItems:'center'}}><Image source={require('../../../../assets/img/app_icons/unmute.png')} style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain',margin:2 }}/><Text style={{color:"#707070", margin:5,textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:14}} >دوره های من</Text></View>
+                                     <View style={{flex:2 ,justifyContent:"flex-start", flexDirection:'row',margin:5,alignItems:'center'}}><Image source={require('../../../../assets/img/app_icons/next.png')} style={{ width:12,height:12,resizeMode: 'contain',margin:2 }}/></View>
+                                    <View style={{ flex:1.5 , margin : 5,flexDirection:"row-reverse" ,alignItems:'center'}}><Image source={require('../../../../assets/img/app_icons/question.png')} style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain',margin:2 }}/><Text style={{color:"#707070", margin:5,textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:13}} >سوالات متداول</Text></View>
                                 </View>
                             </TouchableOpacity>
                             <TouchableOpacity>
                                 <View style={styles.nav_style}>
-                                     <View style={{flex:2 ,justifyContent:"flex-start", flexDirection:'row',margin:5,alignItems:'center'}}><Text style={{textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:18 ,color:"#8AA9FC"}} >{persify(passed)}</Text></View>
-                                    <View style={{ flex:1.5 , margin : 5,flexDirection:"row-reverse" ,alignItems:'center'}}><Image source={require('../../../../assets/img/app_icons/unmute.png')} style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain',margin:2 }}/><Text style={{color:"#707070", margin:5,textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:14}} >علاقه مندی ها</Text></View>
-                                </View>
-                            </TouchableOpacity>
-                            <TouchableOpacity>
-                                <View style={styles.nav_style}>
-                                     <View style={{flex:2 ,justifyContent:"flex-start", flexDirection:'row',margin:5,alignItems:'center'}}><Text style={{textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:18 ,color:"#8AA9FC"}} >{persify(passed)}</Text></View>
-                                    <View style={{ flex:1.5 , margin : 5,flexDirection:"row-reverse" ,alignItems:'center'}}><Image source={require('../../../../assets/img/app_icons/unmute.png')} style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain',margin:2 }}/><Text style={{color:"#707070", margin:5,textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:14}} >گروه های شما</Text></View>
-                                </View>
-                            </TouchableOpacity>
-                            <TouchableOpacity>
-                                <View style={styles.nav_style}>
-                                     <View style={{flex:2 ,justifyContent:"flex-start", flexDirection:'row',margin:5,alignItems:'center'}}><Text style={{textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:18 ,color:"#8AA9FC"}} >{persify(passed)}</Text></View>
-                                    <View style={{ flex:1.5 , margin : 5,flexDirection:"row-reverse" ,alignItems:'center'}}><Image source={require('../../../../assets/img/app_icons/unmute.png')} style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain',margin:2 }}/><Text style={{color:"#707070", margin:5,textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:13}} >معرفی به دوستان</Text></View>
-                                </View>
-                            </TouchableOpacity>
-                            <TouchableOpacity>
-                                <View style={styles.nav_style}>
-                                     <View style={{flex:2 ,justifyContent:"flex-start", flexDirection:'row',margin:5,alignItems:'center'}}><Text style={{textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:18 ,color:"#8AA9FC"}} >{persify(passed)}</Text></View>
-                                    <View style={{ flex:1 , margin : 5,flexDirection:"row-reverse" ,alignItems:'center'}}><Image source={require('../../../../assets/img/app_icons/unmute.png')} style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain',margin:2 }}/><Text style={{color:"#707070", margin:5,textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:14}} >سوالات متداول</Text></View>
+                                     <View style={{flex:2 ,justifyContent:"flex-start", flexDirection:'row',margin:5,alignItems:'center'}}><Image source={require('../../../../assets/img/app_icons/next.png')} style={{ width:12,height:12,resizeMode: 'contain',margin:2 }}/></View>
+                                    <View style={{ flex:1.5 , margin : 5,flexDirection:"row-reverse" ,alignItems:'center'}}><Image source={require('../../../../assets/img/app_icons/share.png')} style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain',margin:2 }}/><Text style={{color:"#707070", margin:5,textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:14}} >معرفی به دوستان</Text></View>
                                 </View>
                             </TouchableOpacity>
                         </View>
@@ -189,7 +207,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 5,
     marginTop: 12
-    }
+    },
+    no_style:{
+    
+        width: SCREEN_WIDTH-40,
+        height: 25,
+        marginTop:5,
+        justifyContent:"space-between",
+        flexDirection:"row",
+        alignItems: 'center',
+        
+        }
 })
 
 export default withNavigation(Profile);

@@ -4,6 +4,9 @@ import TabBar from "fluidbottomnavigation-rn";
 import ViewPager from '@react-native-community/viewpager';
 import Home from './view/Home';
 import Profile from './view/Profile';
+import Blog from './view/blog/Blog';
+import Courses from './view/courses/Courses';
+import Favorite from './view/favorite/Favorite'
 
 
 
@@ -25,22 +28,22 @@ class Master extends Component{
                     <View><Profile/></View>
                   </View>
                   <View key="1">
-                  <View ><Text>blog</Text></View>
+                  <View ><Blog/></View>
                   </View>
                   <View key="2">
                   <View ><Home/></View>
                   </View>
                   <View key="3">
-                  <View ><Text>groduated</Text></View>
+                  <View ><Courses/></View>
                   </View>
                   <View key="4">
-                  <View><Text>liked</Text></View>
+                  <View><Favorite/></View>
                   </View>
                 </ViewPager>
             </View>
       
             <TabBar
-              
+              tintColor ="#8AA9FC"
               onPress={tabIndex => {
                 console.log("tab index = " + tabIndex)
                 this.viewPager.setPage(tabIndex)
