@@ -1,163 +1,295 @@
-import React,{Component} from 'react';
-import { StyleSheet, Text, View, Image, Dimensions, StatusBar } from 'react-native';
-import * as Animatable from 'react-native-animatable';
-import HeaderImageScrollView, { TriggeringView } from 'react-native-image-header-scroll-view';
-import { withNavigation } from 'react-navigation';
+// import React,{Component} from 'react';
+// import { StyleSheet, Text, View, Image, Dimensions, StatusBar } from 'react-native';
+// import { withNavigation } from 'react-navigation';
 
 
-const MIN_HEIGHT = 250;
-const MAX_HEIGHT = 250;
-const SCREEN_WIDTH = Dimensions.get('window').width;
-const SCREEN_HIGHT = Dimensions.get('window').height;
 
-class BlogPageView extends Component{
-    static navigationOptions = {
-        headerShown: false,
-    };
-    constructor() {
-        super();
-        this.state = { showNavTitle: false };
-      }
+// const SCREEN_WIDTH = Dimensions.get('window').width;
+// const SCREEN_HIGHT = Dimensions.get('window').height;
+
+// class BlogPageView extends Component{
+//     static navigationOptions = {
+//         headerShown: false,
+//     };
+   
     
-    render(){
-        const { navigation } = this.props;
+//     render(){
+//         const { navigation } = this.props;
       
-        return(
-            // <View style={styles.container}>
-            //     <Text> {navigation.getParam('title')} </Text>
-            // </View>
-            // <View style={styles.container}>
-            //     <View style={{flex: 2 ,width :SCREEN_WIDTH, backgroundColor:'#356'}}>
-            //     <Image source={navigation.getParam('src')} style={{width:SCREEN_WIDTH, flex:1}} />
-            //     </View>
-            //     <View style={{flex: 4 ,width :SCREEN_WIDTH, backgroundColor:'#8789'}}></View>
-            //     <View style={{position:'absolute',bottom:0,right:0, height:80,width :SCREEN_WIDTH, backgroundColor:'#546'}}></View>
-            // </View>
-            <View style={{ flex: 1 }}>
-        <StatusBar barStyle="light-content" />
-        <HeaderImageScrollView
-          maxHeight={MAX_HEIGHT}
-          minHeight={MIN_HEIGHT}
-          maxOverlayOpacity={0.6}
-          minOverlayOpacity={0.3}
-          fadeOutForeground
-          renderHeader={() => <Image source={navigation.getParam('src')} style={styles.image} />}
-          renderFixedForeground={() => (
-            <Animatable.View
-              style={styles.navTitleView}
-              ref={navTitleView => {
-                this.navTitleView = navTitleView;
-              }}
-            >
-              <Text style={styles.navTitle}>
-                {}
-              </Text>
-            </Animatable.View>
-          )}
-          renderForeground={() => (
-            <View style={styles.titleContainer}>
-             
-            </View>
-          )}
-        >
-          <TriggeringView
-            style={styles.section}
-            onHide={() => this.navTitleView.fadeInUp(200)}
-            onDisplay={() => this.navTitleView.fadeOut(100)}
-          >
-            <Text style={styles.title}>
-              <Text style={styles.name}>{navigation.getParam('title')}</Text>
-            </Text>
-          </TriggeringView>
-          <View style={styles.section}>
-           
-            <Text style={styles.sectionContent}>{navigation.getParam('text')}</Text>
-          </View>
-         
-           
-         
-        </HeaderImageScrollView>
-      </View>
-        );
-    }
-}
-const styles = StyleSheet.create({
-    // container:{
-    //     width :SCREEN_WIDTH,
-    //     height: SCREEN_HIGHT,
-    //     flexDirection : 'column',
-    //     alignItems: 'center',
-    //     justifyContent: "flex-start",
+//         return(
+//           <>
+//             <View style={styles.container}>
+//                 <Text> {navigation.getParam('title')} </Text>
+//             </View>
+//             <View style={styles.container}>
+//                 <View style={{flex: 2 ,width :SCREEN_WIDTH, backgroundColor:'#356'}}>
+//                 <Image source={navigation.getParam('src')} style={{width:SCREEN_WIDTH, flex:1}} />
+//                 </View>
+//                 <View style={{flex: 4 ,width :SCREEN_WIDTH, backgroundColor:'#8789'}}></View>
+//                 <View style={{position:'absolute',bottom:0,right:0, height:80,width :SCREEN_WIDTH, backgroundColor:'#546'}}></View>
+//             </View>
+//             </>
+//         );
+//     }
+// }
+// const styles = StyleSheet.create({
+//     container:{
+//         width :SCREEN_WIDTH,
+//         height: SCREEN_HIGHT,
+//         flexDirection : 'column',
+//         alignItems: 'center',
+//         justifyContent: "flex-start",
         
-    // }
-    image: {
-        height: MAX_HEIGHT,
-        width: Dimensions.get('window').width,
-        alignSelf: 'stretch',
-        resizeMode: 'cover',
+//     }
+    
+// })
+// export default withNavigation(BlogPageView);
+import React, {Component} from 'react';
+import {
+  Animated,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  TouchableOpacity
+} from 'react-native';
+import { withNavigation } from 'react-navigation';
+const HEADER_MAX_HEIGHT = 200;
+const HEADER_MIN_HEIGHT = 60;
+const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
+
+
+
+export default class BlogPageView extends Component {
+  static navigationOptions = {
+            headerShown: false,
+        };
+
+  constructor(props) {
+    super(props);
+  
+    this.state = {
+      scrollY: new Animated.Value(0),
+    };
+  }
+
+  _renderScrollViewContent() {
+    const { navigation } = this.props;
+    return (
+      <View style={styles.scrollViewContent}>
+        <View style={{width:Dimensions.get('window').width , height: 800}}>
+        <View style={{flexDirection:"column"}}>
+          <View style={styles.row}><Text style={styles.title}> {navigation.getParam('title')} </Text></View>
+          <View ><Text style={styles.text}> {navigation.getParam('text')}</Text></View>
+          <View style={{flexDirection: "row" , alignItems:"center", justifyContent:'center',height:40}}>
+         
+          <View style={styles.shadow} >
+          <Image source={require('../../../assets/img/app_icons/like.png')} style={{ width:15,height:15,resizeMode: 'contain' }}/>
+          </View>
+          <Text style={styles.text}>مطلب چطور بود؟! دوست داشتید؟</Text>
+          
+          </View>
+          
+        </View>
+          <View style={{alignItems:'center',justifyContent:"center", width:Dimensions.get('window').width,marginTop:5,height:10}}>
+            <View style={{alignItems:'center',justifyContent:"center",backgroundColor:'#707070', width:Dimensions.get('window').width-60,marginTop:5,height:1}}/>
+          </View>
+          <View style={{flexDirection:'row', alignItems:'center',justifyContent:"center", width:Dimensions.get('window').width,marginTop:25,height:80}}>
+            <TouchableOpacity style={styles.btn_login2} onPress={this.onPressSave}>
+            
+                <Text style={styles.btn_title}> اشتراک گذاری </Text>
+                <Image source={require('../../../assets/img/app_icons/share.png')} style={{ width:20,height:20,resizeMode: 'contain' }}/>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.btn_login} onPress={this.onPressSave}>
+
+                <Text style={styles.btn_title}> ذخیره </Text>
+                <Image source={require('../../../assets/img/app_icons/bookmark.png')} style={{ width:20,height:20,resizeMode: 'contain' }}/>
+            </TouchableOpacity>
+          </View>
+        </View>
+        
+      </View>
+    );
+  }
+
+  onPressheader= ()=>{
+    this.props.navigation.goBack();
+  }
+
+  render() {
+    const { navigation } = this.props;
+    const headerHeight = this.state.scrollY.interpolate({
+      inputRange: [0, HEADER_SCROLL_DISTANCE],
+      outputRange: [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT],
+      extrapolate: 'clamp',
+    })
+    const imageOpacity = this.state.scrollY.interpolate({
+      inputRange: [0, HEADER_SCROLL_DISTANCE / 2, HEADER_SCROLL_DISTANCE],
+      outputRange: [1, 1, 0],
+      extrapolate: 'clamp',
+    });
+    const imageTranslate = this.state.scrollY.interpolate({
+      inputRange: [0, HEADER_SCROLL_DISTANCE],
+      outputRange: [0, -50],
+      extrapolate: 'clamp',
+    });
+    return (
+      <View style={styles.fill}>
+        <ScrollView
+          style={styles.fill}
+      scrollEventThrottle={16}
+      onScroll={Animated.event(
+      [{nativeEvent: {contentOffset: {y: this.state.scrollY}}}]
+      )}
+        >
+          {this._renderScrollViewContent()}
+        </ScrollView>
+        <Animated.View style={[styles.header, {height: headerHeight}]}>
+        <Animated.Image
+          style={[
+            styles.backgroundImage,
+            {opacity: imageOpacity, transform: [{translateY: imageTranslate}]},
+          ]}
+          source={navigation.getParam('src')}
+        />
+        <Animated.View>
+          <TouchableOpacity style={styles.bar} onPress={this.onPressheader}>
+          <Image
+              style={styles.back}
+              source={require('../../../assets/img/app_icons/undo.png')}
+            />
+          </TouchableOpacity>
+          </Animated.View>
+          
+        </Animated.View>
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  back:{
+    
+    width: 20,
+    height: 20,
+    marginHorizontal :20
+  },
+  backgroundImage: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    width: null,
+    height: HEADER_MAX_HEIGHT,
+    resizeMode: 'cover',
+  },
+  header: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: '#8AA9FC',
+    overflow: 'hidden',
+    borderBottomLeftRadius: 25
+  },
+  bar: {
+    marginTop: 22,
+    height: 32,
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
+    marginLeft: 10,
+   
+  },
+  title: {
+    backgroundColor: 'transparent',
+    color: 'white',
+    fontSize: 18,
+  },
+  scrollViewContent: {
+    marginTop: HEADER_MAX_HEIGHT,
+  },
+  fill: {
+    flex: 1,
+  },
+  row: {
+    height: 40,
+    margin: 16,
+    marginTop:2,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+  },
+  title:{
+    textAlign: 'center',
+    fontFamily:"IRANSansWeb",
+    fontSize: 20
+  },
+  text:{
+    textAlign: "right",
+    fontFamily:"IRANSansWeb",
+    fontSize: 14,
+    padding:15,
+    color:"#707070"
+
+  },
+  shadow:{
+    width:30,
+    height:30 ,
+    alignItems:"center",
+    justifyContent:'center', 
+    backgroundColor:'#ffff',
+    borderRadius:15,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,},
+  btn_login: {
+    flexDirection:'row',
+    width : 150,
+    height :45,
+    margin:5,
+    borderRadius:45,
+    backgroundColor:'#8AA9FC',
+    alignItems:'center',
+    justifyContent:'center',
+    shadowColor: "#000",
+    shadowOffset: {
+        width: 0,
+        height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    },
+    btn_login2: {
+      flexDirection:'row',
+      width : 150,
+      height :45,
+      margin:5,
+      borderRadius:45,
+      backgroundColor:'#EDC483',
+      alignItems:'center',
+      justifyContent:'center',
+      shadowColor: "#000",
+      shadowOffset: {
+          width: 0,
+          height: 2,
       },
-      title: {
-        fontSize: 20,
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 5,
       },
-      name: {
-        fontWeight: 'bold',
+    btn_title: {
+        padding : 5,
+        textAlign: 'center',
+        color: '#251A51',
+        fontFamily:"IRANSansWeb",
+        fontSize: 14
       },
-      section: {
-        padding: 20,
-        borderBottomWidth: 1,
-        borderBottomColor: '#cccccc',
-        backgroundColor: 'white',
-      },
-      sectionTitle: {
-        fontSize: 18,
-        fontWeight: 'bold',
-      },
-      sectionContent: {
-        fontSize: 16,
-        textAlign: 'justify',
-        textAlignVertical:'center'
-      },
-      keywords: {
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
-        flexWrap: 'wrap',
-      },
-      keywordContainer: {
-        backgroundColor: '#999999',
-        borderRadius: 10,
-        margin: 10,
-        padding: 10,
-      },
-      keyword: {
-        fontSize: 16,
-        color: 'white',
-      },
-      titleContainer: {
-        flex: 1,
-        alignSelf: 'stretch',
-        justifyContent: 'center',
-        alignItems: 'center',
-      },
-      imageTitle: {
-        color: 'white',
-        backgroundColor: 'transparent',
-        fontSize: 24,
-      },
-      navTitleView: {
-        height: MIN_HEIGHT,
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingTop: 16,
-        opacity: 0,
-      },
-      navTitle: {
-        color: 'white',
-        fontSize: 18,
-        backgroundColor: 'transparent',
-      },
-      sectionLarge: {
-        height: 600,
-      },
-})
-export default withNavigation(BlogPageView);
+
+});
