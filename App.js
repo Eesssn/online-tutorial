@@ -20,7 +20,10 @@ import FormScreen from './src/pages/formcomplet/FormCopmplet';
 import VerificationScreen from './src/pages/verification/VerificationScreen';
 import ForgetPassScreen from './src/pages/forgetpass/ForgetPass'
 import SettingScreen from './src/pages/settings/Setting';
-import BlogViewPage from './src/pages/blogpageView/BlogPageView'
+import BlogViewPage from './src/pages/blogpageView/BlogPageView';
+import NBuySCREEN from './src/pages/content/NBuy';
+import BuyScreen from './src/pages/content/BuyCourses';
+import PartScreen from './src/pages/content/PartContent';
 const RootStack = createStackNavigator(
   {
     Home: HomeScreen,
@@ -31,6 +34,9 @@ const RootStack = createStackNavigator(
     Forget : ForgetPassScreen,
     Setting : SettingScreen,
     Blog : BlogViewPage,
+    Nbuy : NBuySCREEN,
+    Buy : BuyScreen,
+    Part : PartScreen,
   },
   {
     initialRouteName: 'Home',

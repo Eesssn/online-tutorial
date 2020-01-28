@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {StyleSheet ,Properties,Image ,TextInput ,Text ,View , TouchableOpacity,Dimensions} from 'react-native'
+import {StyleSheet ,View , TouchableOpacity,Dimensions} from 'react-native'
 import TabBar from "fluidbottomnavigation-rn";
 import ViewPager from '@react-native-community/viewpager';
 import Home from './view/Home';
@@ -15,6 +15,7 @@ class Master extends Component{
     static navigationOptions = {
         headerShown: false,
     };
+  
     render(){
         return(
             <View style={styles.container}>
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     },
     recentlyPlayed: {
       
-      height: Dimensions.get('window').height-50,
+     flex:1 ,
       width: Dimensions.get('window').width
   },
   viewPager: {

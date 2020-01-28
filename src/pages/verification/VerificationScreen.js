@@ -43,20 +43,20 @@ class FormComplet extends Component {
               break;
             case 1:
                 this.setState({
-                    d2 :2,
+                    d2 :e,
                     d3 : "*",
                     d4 : "*"
                  })
               break;
               case 2:
                 this.setState({
-                    d3 : 3,
+                    d3 : e,
                     d4 : "*"
                  })
               break;
               case 3:
                 this.setState({
-                    d4 : 4,
+                    d4 : e,
                     
                    
                  })

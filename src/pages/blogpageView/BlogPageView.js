@@ -1,49 +1,3 @@
-// import React,{Component} from 'react';
-// import { StyleSheet, Text, View, Image, Dimensions, StatusBar } from 'react-native';
-// import { withNavigation } from 'react-navigation';
-
-
-
-// const SCREEN_WIDTH = Dimensions.get('window').width;
-// const SCREEN_HIGHT = Dimensions.get('window').height;
-
-// class BlogPageView extends Component{
-//     static navigationOptions = {
-//         headerShown: false,
-//     };
-   
-    
-//     render(){
-//         const { navigation } = this.props;
-      
-//         return(
-//           <>
-//             <View style={styles.container}>
-//                 <Text> {navigation.getParam('title')} </Text>
-//             </View>
-//             <View style={styles.container}>
-//                 <View style={{flex: 2 ,width :SCREEN_WIDTH, backgroundColor:'#356'}}>
-//                 <Image source={navigation.getParam('src')} style={{width:SCREEN_WIDTH, flex:1}} />
-//                 </View>
-//                 <View style={{flex: 4 ,width :SCREEN_WIDTH, backgroundColor:'#8789'}}></View>
-//                 <View style={{position:'absolute',bottom:0,right:0, height:80,width :SCREEN_WIDTH, backgroundColor:'#546'}}></View>
-//             </View>
-//             </>
-//         );
-//     }
-// }
-// const styles = StyleSheet.create({
-//     container:{
-//         width :SCREEN_WIDTH,
-//         height: SCREEN_HIGHT,
-//         flexDirection : 'column',
-//         alignItems: 'center',
-//         justifyContent: "flex-start",
-        
-//     }
-    
-// })
-// export default withNavigation(BlogPageView);
 import React, {Component} from 'react';
 import {
   Animated,
@@ -100,7 +54,7 @@ export default class BlogPageView extends Component {
             <TouchableOpacity style={styles.btn_login2} onPress={this.onPressSave}>
             
                 <Text style={styles.btn_title}> اشتراک گذاری </Text>
-                <Image source={require('../../../assets/img/app_icons/share.png')} style={{ width:20,height:20,resizeMode: 'contain' }}/>
+                <Image source={require('../../../assets/img/app_icons/share.png')} style={{ width:20,height:20123,resizeMode: 'contain' }}/>
             </TouchableOpacity>
             <TouchableOpacity style={styles.btn_login} onPress={this.onPressSave}>
 

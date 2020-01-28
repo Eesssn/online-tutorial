@@ -43,6 +43,7 @@ class SingUp extends Component {
     onPressSignUp = ()=>{
         this.props.navigation.navigate('Form')
     }
+
     render(){
         return(
             <KeyboardAwareScrollView

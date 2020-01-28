@@ -47,8 +47,8 @@ class Profile extends React.Component{
                 <View
                     style={{
                         backgroundColor:"#8aa9fc",
-                        width: SCREEN_WIDTH+10,
-                        height: SCREEN_HEIGHT/3.5,
+                        width: SCREEN_WIDTH,
+                        height: "23%",
                         flexDirection:"column",
                         marginLeft:0, marginRight:-5,marginTop:-5,
                         borderBottomLeftRadius: 35,
@@ -63,20 +63,20 @@ class Profile extends React.Component{
                     }}>
                     {/* hedaer */}
                         <View style={styles.header_btn}>
-                            <TouchableOpacity style={{margin:15, width : 50 , height: 50 ,justifyContent:"center", alignContent:'center'}}>
+                            <TouchableOpacity style={{margin:15, width : 25 , height: 25 ,justifyContent:"center", alignContent:'center'}}>
                                 <Image source={require('../../../../assets/img/app_icons/chat.png')}  style={{width: 32, height: 32 ,  resizeMode: 'contain' , marginHorizontal:8}} />
-                                <View style={{ alignItems:"center",justifyContent:"center", width : 15 , height:15 , borderRadius:15/2 , backgroundColor : "#E3707F" ,position:"absolute",top:"55%",left:"60%"}}><Text style= {{fontSize:10, fontFamily:"IRANSansWeb", color:"#FFFFFF"}}>{ persify(chatNumber)}</Text></View>
+                                <View style={{ alignItems:"center",justifyContent:"center", width : 15 , height:15 , borderRadius:15/2 , backgroundColor : "#E3707F" ,position:"absolute",top:"60%",right: -20}}><Text style= {{fontSize:10, fontFamily:"IRANSansWeb", color:"#FFFFFF"}}>{ persify(chatNumber)}</Text></View>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{margin:15, width : 50 , height: 50 ,justifyContent:"center", alignContent:'center'}} onPress={() =>{ this.props.navigation.navigate('Setting')}}>
+                            <TouchableOpacity style={{margin:25, width : 25 , height: 25 ,justifyContent:"center", alignContent:'center'}} onPress={() =>{ this.props.navigation.navigate('Setting')}}>
                                 <Image source={require('../../../../assets/img/app_icons/controls.png')}  style={{width: 32, height: 32 ,  resizeMode: 'contain' , marginHorizontal:8}} />
                             </TouchableOpacity>
                          </View>
                          {/* image box */}
                          <View style={styles.header_image}>
                             <TouchableOpacity >
-                            <Image source={require('../../../../assets/img/profilepic.jpeg')}  style={{width: 100, height: 100 , borderRadius:120/2 }} />
+                            <Image source={require('../../../../assets/img/profilepic.jpeg')}  style={{width: 65, height: 65 , borderRadius:65/2 }} />
                             </TouchableOpacity>
-                            <Text style={{  padding:5,fontSize:22,color:'#ffffff',fontFamily:'Lalezar-Regular',alignItems: "center",}}>{name}</Text>
+                            <Text style={{  padding:5,fontSize:20,color:'#ffffff',fontFamily:'Lalezar-Regular',alignItems: "center",}}>{name}</Text>
                          </View>
                     </View>
                     {/* content */}
@@ -150,17 +150,17 @@ class Profile extends React.Component{
 const styles = StyleSheet.create({
     header_btn:{
         width: SCREEN_WIDTH,
-        height: 60,
+        height: 50,
         flexDirection: "row",
         justifyContent: 'space-between',
         alignItems: "center",
-        marginTop:5
+        marginTop:10
     },
     header_image:{
         width:SCREEN_WIDTH,
         height:"60%",
         flexDirection: "column",
-        justifyContent: "flex-start",
+        justifyContent: "center",
         alignItems: "center",
     },
     main_content:{
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
     main_info:{
         flexDirection:"row",
         width : SCREEN_WIDTH -40,
-        height:85, 
+        height:75, 
         borderRadius:25,
         backgroundColor:'#ffffff',
         marginTop: 22,
