@@ -125,7 +125,7 @@ class Profile extends React.Component{
                                     <View style={{ flex:1.5 , margin : 5,flexDirection:"row-reverse" ,alignItems:'center'}}><Text style={{color:"#707070", margin:0,textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:14}} >تنظیمات نرم افزار</Text></View>
                                 </View>
                             </View>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() =>{ this.props.navigation.navigate('FQues')}}>
                                 <View style={styles.nav_style}>
                                      <View style={{flex:2 ,justifyContent:"flex-start", flexDirection:'row',margin:5,alignItems:'center'}}><Image source={require('../../../../assets/img/app_icons/next.png')} style={{ width:12,height:12,resizeMode: 'contain',margin:2 }}/></View>
                                     <View style={{ flex:1.5 , margin : 5,flexDirection:"row-reverse" ,alignItems:'center'}}><Image source={require('../../../../assets/img/app_icons/question.png')} style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain',margin:2 }}/><Text style={{color:"#707070", margin:5,textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:13}} >سوالات متداول</Text></View>

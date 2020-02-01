@@ -24,6 +24,9 @@ import BlogViewPage from './src/pages/blogpageView/BlogPageView';
 import NBuySCREEN from './src/pages/content/NBuy';
 import BuyScreen from './src/pages/content/BuyCourses';
 import PartScreen from './src/pages/content/PartContent';
+import ChateListScreen from './src/pages/chat/ChatList';
+import ChatBoxScreen from './src/pages/chat/ChatBox';
+import FrequentlyQuesScreen from './src/pages/profilepages/FrequentlyQuestions';
 const RootStack = createStackNavigator(
   {
     Home: HomeScreen,
@@ -37,6 +40,9 @@ const RootStack = createStackNavigator(
     Nbuy : NBuySCREEN,
     Buy : BuyScreen,
     Part : PartScreen,
+    ChatList : ChateListScreen,
+    ChatBox : ChatBoxScreen,
+    FQues : FrequentlyQuesScreen,
   },
   {
     initialRouteName: 'Home',

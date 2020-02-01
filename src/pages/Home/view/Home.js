@@ -121,11 +121,11 @@ class Home extends React.Component{
                     <View style={styles.chat_box}>
                         <View style={{marginTop:15,width: SCREEN_WIDTH,height: 20,flexDirection:'row-reverse',alignItems:'center',justifyContent:"flex-end",}}>
                                     <View style={{marginHorizontal:10, flex: 1.5, height:100, alignItems:"center", justifyContent:"flex-start", flexDirection:"row-reverse"}}>
-                                    <Text style={{ color:'#251A51',fontFamily:"IRANSansWeb",}}>آخرین دوره ها </Text>
+                                    <Text style={{ color:'#251A51',fontFamily:"IRANSansWeb",}}>گروه های شما </Text>
                                     </View>
                     
                                     <View style={{padding:10, flex :2 ,height:100, alignItems:"center", justifyContent:"flex-end", flexDirection:"row-reverse"}} >
-                                        <TouchableOpacity style={styles.btn_login} onPress={this.onPressShowAll}>
+                                        <TouchableOpacity style={styles.btn_login} onPress={() =>{ this.props.navigation.navigate('ChatList')}}>
                                             <Text style={styles.btn_title}> نمایش همه </Text>
                                         </TouchableOpacity>
                                     </View>
