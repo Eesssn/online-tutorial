@@ -27,6 +27,12 @@ import PartScreen from './src/pages/content/PartContent';
 import ChateListScreen from './src/pages/chat/ChatList';
 import ChatBoxScreen from './src/pages/chat/ChatBox';
 import FrequentlyQuesScreen from './src/pages/profilepages/FrequentlyQuestions';
+import ChangePassScreen from './src/pages/settings/ChangePass'
+import CallMeScreen from './src/pages/settings/CallMe'
+import AboutMeScreen from './src/pages/settings/AboutMe'
+import SearchScreen from './src/pages/search/Search';
+import MyProfileScreen from './src/pages/profilepages/MyProfile'
+import ViewAllScreen from './src/pages/Home/view/courses/ViewAll' 
 const RootStack = createStackNavigator(
   {
     Home: HomeScreen,
@@ -43,6 +49,13 @@ const RootStack = createStackNavigator(
     ChatList : ChateListScreen,
     ChatBox : ChatBoxScreen,
     FQues : FrequentlyQuesScreen,
+    ChangePass : ChangePassScreen,
+    CallMe : CallMeScreen,
+    AboutMe : AboutMeScreen,
+    Search : SearchScreen,
+    MyProfile :MyProfileScreen,
+    ViewAll :ViewAllScreen,
+    
   },
   {
     initialRouteName: 'Home',

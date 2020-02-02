@@ -1,5 +1,5 @@
 import React from 'react';
-import { View ,Text ,TouchableOpacity ,Image,Dimensions ,StyleSheet ,Switch} from 'react-native';
+import { View ,Text ,TouchableOpacity ,Image,Dimensions ,StyleSheet ,Switch,Share} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import persify from "persify"
 
@@ -33,6 +33,28 @@ class Profile extends React.Component{
              this.props.navigation.navigate('Form',{pageName :'profile'});
          }
      }
+
+     onShare = async () => {
+        try {
+          const result = await Share.share({
+            message:
+              'App test| www.vistaapp.ir',
+          });
+    
+          if (result.action === Share.sharedAction) {
+            if (result.activityType) {
+              // shared with activity type of result.activityType
+            } else {
+              // shared
+            }
+          } else if (result.action === Share.dismissedAction) {
+            // dismissed
+          }
+        } catch (error) {
+          alert(error.message);
+        }
+      };
+
     
     render(){
         const {name,doing,ability,passed,chatNumber} = this.state ;
@@ -63,7 +85,8 @@ class Profile extends React.Component{
                     }}>
                     {/* hedaer */}
                         <View style={styles.header_btn}>
-                            <TouchableOpacity style={{margin:15, width : 25 , height: 25 ,justifyContent:"center", alignContent:'center'}}>
+                            <TouchableOpacity style={{margin:15, width : 25 , height: 25 ,justifyContent:"center", alignContent:'center'}}
+                                onPress={()=> this.props.navigation.navigate('ChatList')}>
                                 <Image source={require('../../../../assets/img/app_icons/chat.png')}  style={{width: 32, height: 32 ,  resizeMode: 'contain' , marginHorizontal:8}} />
                                 <View style={{ alignItems:"center",justifyContent:"center", width : 15 , height:15 , borderRadius:15/2 , backgroundColor : "#E3707F" ,position:"absolute",top:"60%",right: -20}}><Text style= {{fontSize:10, fontFamily:"IRANSansWeb", color:"#FFFFFF"}}>{ persify(chatNumber)}</Text></View>
                             </TouchableOpacity>
@@ -131,7 +154,8 @@ class Profile extends React.Component{
                                     <View style={{ flex:1.5 , margin : 5,flexDirection:"row-reverse" ,alignItems:'center'}}><Image source={require('../../../../assets/img/app_icons/question.png')} style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain',margin:2 }}/><Text style={{color:"#707070", margin:5,textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:13}} >سوالات متداول</Text></View>
                                 </View>
                             </TouchableOpacity>
-                            <TouchableOpacity>
+                            <TouchableOpacity 
+                                onPress={this.onShare}>
                                 <View style={styles.nav_style}>
                                      <View style={{flex:2 ,justifyContent:"flex-start", flexDirection:'row',margin:5,alignItems:'center'}}><Image source={require('../../../../assets/img/app_icons/next.png')} style={{ width:12,height:12,resizeMode: 'contain',margin:2 }}/></View>
                                     <View style={{ flex:1.5 , margin : 5,flexDirection:"row-reverse" ,alignItems:'center'}}><Image source={require('../../../../assets/img/app_icons/share.png')} style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain',margin:2 }}/><Text style={{color:"#707070", margin:5,textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:14}} >معرفی به دوستان</Text></View>

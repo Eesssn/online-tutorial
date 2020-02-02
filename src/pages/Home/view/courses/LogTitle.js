@@ -25,7 +25,7 @@ class LogoTitle extends React.Component {
          <TouchableOpacity onPress={this.onPressheader}>
             <Image
               style={styles.back}
-              source={require('../../../assets/img/app_icons/undo.png')}
+              source={require('../../../../../assets/img/app_icons/undo.png')}
             />
           </TouchableOpacity>
          <Text style={styles.TextHeader} >{this.props.title}</Text>

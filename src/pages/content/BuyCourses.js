@@ -87,7 +87,8 @@ class BuyCourses extends React.Component{
                                 <Image source={navigation.getParam('src')}  style={{width: 46, height: 46 , borderRadius:46/2 ,resizeMode:'cover' }} />
                            </View>
                            <View style={{flex:1 ,height:60, alignItems:'flex-end',justifyContent:'center'}}>
-                                <TouchableOpacity style={{margin:15, width : 50 , height: 50 ,justifyContent:"center", alignContent:'center'}}>
+                                <TouchableOpacity style={{margin:15, width : 50 , height: 50 ,justifyContent:"center", alignContent:'center'}}
+                                      onPress={()=> this.props.navigation.navigate('ChatList')} >
                                         <Image source={require('../../../assets/img/app_icons/chat.png')}  style={{width: 32, height: 32 ,  resizeMode: 'contain' , marginHorizontal:8}} />
                                         <View style={{ alignItems:"center",justifyContent:"center", width : 15 , height:15 , borderRadius:15/2 , backgroundColor : "#E3707F" ,position:"absolute",top:"55%",left:"60%"}}><Text style= {{fontSize:10, fontFamily:"IRANSansWeb", color:"#FFFFFF"}}>{ persify(chatNumber)}</Text></View>
                                 </TouchableOpacity>

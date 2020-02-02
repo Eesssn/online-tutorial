@@ -1,7 +1,7 @@
 import React from 'react';
 import { View , Text , TouchableOpacity,Image, StyleSheet,Dimensions,FlatList } from 'react-native'
 import { Rating, AirbnbRating } from 'react-native-ratings';
-
+import persify from "persify";
 const SCREEN_WIDTH = Dimensions.get('window').width
 const SCREEN_HIGHT = Dimensions.get('window').height
 class Nbuy extends React.Component{
@@ -58,7 +58,8 @@ class Nbuy extends React.Component{
                             
                         </View>
 
-                        <TouchableOpacity style={styles.btn_login} onPress={this.onPressSave}>
+                        <TouchableOpacity style={styles.btn_login} 
+                            onPress={() =>{ this.props.navigation.navigate('Buy',{'chapternumber':5 , part: 5,'courseid':navigation.getParam('id'),"src":navigation.getParam('src'),teacher:navigation.getParam('teacher'),title:navigation.getParam('title')})}}>
 
 <Text style={styles.btn_title}>{navigation.getParam('price') == 0 ? ("شروع دوره"):("خرید دوره")  }</Text>
 {navigation.getParam('price') == 0 ? (
@@ -74,7 +75,18 @@ class Nbuy extends React.Component{
             } }>
     <Text style={{fontSize:10, fontFamily:"Lalezar-Regular", color:"#251A51"}}> رایگان</Text>
 </View>
-        ):( <></>)}
+        ):( <View style={{
+            width : 70,
+            height :18,
+            borderRadius:45,
+            backgroundColor:'#9DFB45',
+            alignItems:'center',
+            justifyContent:'center',
+            position:'absolute',
+            bottom:-12,right:"35%"
+            } }>
+    <Text style={{fontSize:10, fontFamily:'IRANSansWeb', color:"#251A51"}}> {persify( navigation.getParam('price'))} تومان </Text>
+</View>)}
 
 </TouchableOpacity>
 

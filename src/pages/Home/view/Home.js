@@ -70,12 +70,14 @@ class Home extends React.Component{
                                 <Text style={styles.text_profile} >سلام  {name} </Text>
                             </View>
                
-                            <View style={{padding:10, flex :2 ,height:100, alignItems:"center", justifyContent:"flex-end", flexDirection:"row-reverse"}} >
+                            <TouchableOpacity 
+                            style={{padding:10, flex :2 ,height:100, alignItems:"center", justifyContent:"flex-end", flexDirection:"row-reverse"}} 
+                            onPress={()=> this.props.navigation.navigate('Search',{from:'home'})}>
                                 <View style={{ alignItems :"center", flexDirection:'row-reverse', height :28 , width: 100 , borderRadius :35 , backgroundColor :"#ffff" ,}}>
                                         <Image source={require('../../../../assets/img/app_icons/magnifying-glass.png')}  style={{width: 12, height: 12 ,  resizeMode: 'contain' , marginHorizontal:8}} />
                                         <Text  style={{alignItems:"center", width: 50, height:25,color:'#707070' , fontSize:12, textAlign: 'right',fontFamily:"IRANSansWeb"}}>جستجو</Text>
                                     </View>
-                            </View>
+                            </TouchableOpacity>
                    
                         </View>
                         <View style={styles.last_courses}>
@@ -86,7 +88,8 @@ class Home extends React.Component{
                                 </View>
                 
                                 <View style={{padding:10, flex :2 ,height:100, alignItems:"center", justifyContent:"flex-end", flexDirection:"row-reverse"}} >
-                                    <TouchableOpacity style={styles.btn_login} onPress={this.onPressShowAll}>
+                                    <TouchableOpacity style={styles.btn_login} 
+                                        onPress={()=> this.props.navigation.navigate('ViewAll')}>
                                         <Text style={styles.btn_title}> نمایش همه </Text>
                                     </TouchableOpacity>
                                 </View>

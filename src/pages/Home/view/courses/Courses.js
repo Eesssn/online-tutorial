@@ -124,7 +124,8 @@ class Courses extends React.Component{
                                  
                                  flexDirection: 'row'
                              }}>
-                                 <TouchableOpacity style={{margin:15, width : 50 , height: 50 ,justifyContent:"center", alignContent:'center'}}>
+                                 <TouchableOpacity style={{margin:15, width : 50 , height: 50 ,justifyContent:"center", alignContent:'center'}}
+                                     onPress={()=> this.props.navigation.navigate('ChatList')}>
                                     <Image source={require('../../../../../assets/img/app_icons/chat.png')}  style={{width: 32, height: 32 ,  resizeMode: 'contain' , marginHorizontal:8}} />
                                     <View style={{ alignItems:"center",justifyContent:"center", width : 15 , height:15 , borderRadius:15/2 , backgroundColor : "#E3707F" ,position:"absolute",top:"55%",left:"60%"}}><Text style= {{fontSize:10, fontFamily:"IRANSansWeb", color:"#FFFFFF"}}>{ persify(chatNumber)}</Text></View>
                                  </TouchableOpacity>
@@ -136,10 +137,14 @@ class Courses extends React.Component{
                                  justifyContent:"center",
                                  
                              }}>
-                                <View style={{ alignItems :"center", flexDirection:'row-reverse', height :28 , width: 100 , borderRadius :35 , backgroundColor :"#ffff" ,}}>
-                                            <Image source={require('../../../../../assets/img/app_icons/magnifying-glass.png')}  style={{width: 12, height: 12 ,  resizeMode: 'contain' , marginHorizontal:8}} />
-                                            <TextInput placeholder ='جستجو'  style={{alignItems:"center", width: 50, height:40 , fontSize:12, textAlign: 'right',fontFamily:"IRANSansWeb"}}/>
-                                </View>
+                               <TouchableOpacity 
+                                        style={{padding:10, flex :2 ,height:100, alignItems:"center", justifyContent:"flex-end", flexDirection:"row-reverse"}} 
+                                        onPress={()=> this.props.navigation.navigate('Search',{from:'course'})}>
+                                            <View style={{ alignItems :"center", flexDirection:'row-reverse', height :28 , width: 100 , borderRadius :35 , backgroundColor :"#ffff" ,}}>
+                                                    <Image source={require('../../../../../assets/img/app_icons/magnifying-glass.png')}  style={{width: 12, height: 12 ,  resizeMode: 'contain' , marginHorizontal:8}} />
+                                                    <Text  style={{alignItems:"center", width: 50, height:25,color:'#707070' , fontSize:12, textAlign: 'right',fontFamily:"IRANSansWeb"}}>جستجو</Text>
+                                                </View>
+                                </TouchableOpacity>
                             </View>
                               <View style={{
                                  flex:1,
@@ -151,7 +156,7 @@ class Courses extends React.Component{
                                 flexDirection: "row",
                              }}>
 
-                                    <TouchableOpacity >
+                                    <TouchableOpacity onPress={()=> this.props.navigation.navigate('MyProfile')}>
                                       <Image source={require('../../../../../assets/img/profilepic.jpeg')}  style={{width: 45, height: 45 , borderRadius:45/2 }} />
                                     </TouchableOpacity>
                              </View>

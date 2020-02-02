@@ -15,7 +15,7 @@ const SCREEN_HEIGHT =Dimensions.get('window').height;
 class Setting extends Component {
     static navigationOptions = {
         // headerTitle instead of title
-        header: () => <LogoTitle/>,
+        header: () => <LogoTitle title={'تنظیمات'}/>,
       };
 
     constructor(props) {
@@ -32,13 +32,13 @@ class Setting extends Component {
 
    onPress(value){
        if (value == "change"){
-           console.log('change')
+        this.props.navigation.navigate('ChangePass')
        }
        else if(value == "call"){
-           console.log("call")
+        this.props.navigation.navigate('CallMe')
        }
        else if (value == "about"){
-           console.log('about me')
+         this.props.navigation.navigate('AboutMe') 
        }else if (value == 'exit'){
         BackHandler.exitApp()
        }

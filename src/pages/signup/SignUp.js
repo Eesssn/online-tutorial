@@ -67,7 +67,7 @@ class SingUp extends Component {
 
         <View style={styles.input_style}>
             <Image source={require('../../../assets/img/singup/key.png')}  style={{width: 20, height: 20 ,  resizeMode: 'contain', marginLeft :5 ,marginRight:30}} />
-            <TextInput placeholder ='رمز عبور' secureTextEntry={true} maxLength={11} style={{width: 300,textAlign: 'right',fontFamily:"IRANSansWeb"}}/>
+            <TextInput placeholder ='رمز عبور' secureTextEntry={true}  style={{width: 300,textAlign: 'right',fontFamily:"IRANSansWeb"}}/>
         </View>
         
         <TouchableOpacity style={styles.forget_style} onPress ={() =>{ this.props.navigation.navigate('Forget')}}>
@@ -86,11 +86,11 @@ class SingUp extends Component {
 
         <View style={styles.input_style}>
             <Image source={require('../../../assets/img/singup/key.png')}  style={{width: 20, height: 20 ,  resizeMode: 'contain', marginLeft :5 ,marginRight:30}} />
-            <TextInput placeholder ='رمز عبور'secureTextEntry={true} maxLength={11} style={{width: 300,textAlign: 'right',fontFamily:"IRANSansWeb"}}/>
+            <TextInput placeholder ='رمز عبور'secureTextEntry={true}  style={{width: 300,textAlign: 'right',fontFamily:"IRANSansWeb"}}/>
         </View>
         <View style={styles.input_style}>
             <Image source={require('../../../assets/img/singup/key.png')}  style={{width: 20, height: 20 ,  resizeMode: 'contain', marginLeft :5 ,marginRight:30}} />
-            <TextInput placeholder ='رمز عبور' secureTextEntry={true} maxLength={11} style={{width: 300,textAlign: 'right',fontFamily:"IRANSansWeb"}}/>
+            <TextInput placeholder ='رمز عبور' secureTextEntry={true}  style={{width: 300,textAlign: 'right',fontFamily:"IRANSansWeb"}}/>
         </View>
       
     

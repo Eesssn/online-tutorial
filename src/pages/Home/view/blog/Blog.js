@@ -17,7 +17,8 @@ class Blog extends React.Component{
             chatNumber : 2,
             tab1:"#FFFF",
             tab2:"#8aa9fc",
-            tab3:"#8aa9fc"
+            tab3:"#8aa9fc",
+            
         }
     
     }
@@ -27,7 +28,8 @@ class Blog extends React.Component{
             this.setState({
                 tab3:"#FFFF",
                 tab2:"#8aa9fc",
-                tab1:"#8aa9fc" 
+                tab1:"#8aa9fc" ,
+                
             })
             this.viewPager.setPage(0)
         }
@@ -36,8 +38,8 @@ class Blog extends React.Component{
             this.setState({
                 tab2:"#FFFF",
                 tab1:"#8aa9fc",
-                tab3:"#8aa9fc" 
-               
+                tab3:"#8aa9fc" ,
+                
 
             })
             this.viewPager.setPage(1)
@@ -47,7 +49,9 @@ class Blog extends React.Component{
             this.setState({
                 tab1:"#FFFF",
                 tab2:"#8aa9fc",
-                tab3:"#8aa9fc" 
+                tab3:"#8aa9fc" ,
+               
+            
             })
             this.viewPager.setPage(2)
         }
@@ -124,7 +128,8 @@ class Blog extends React.Component{
                                  
                                  flexDirection: 'row'
                              }}>
-                                 <TouchableOpacity style={{margin:15, width : 50 , height: 50 ,justifyContent:"center", alignContent:'center'}}>
+                                 <TouchableOpacity style={{margin:15, width : 50 , height: 50 ,justifyContent:"center", alignContent:'center'}}
+                                    onPress={()=> this.props.navigation.navigate('ChatList')}>
                                     <Image source={require('../../../../../assets/img/app_icons/chat.png')}  style={{width: 32, height: 32 ,  resizeMode: 'contain' , marginHorizontal:8}} />
                                     <View style={{ alignItems:"center",justifyContent:"center", width : 15 , height:15 , borderRadius:15/2 , backgroundColor : "#E3707F" ,position:"absolute",top:"55%",left:"60%"}}><Text style= {{fontSize:10, fontFamily:"IRANSansWeb", color:"#FFFFFF"}}>{ persify(chatNumber)}</Text></View>
                                  </TouchableOpacity>
@@ -136,10 +141,12 @@ class Blog extends React.Component{
                                  justifyContent:"center",
                                  
                              }}>
-                                <View style={{ alignItems :"center", flexDirection:'row-reverse', height :28 , width: 100 , borderRadius :35 , backgroundColor :"#ffff" ,}}>
-                                            <Image source={require('../../../../../assets/img/app_icons/magnifying-glass.png')}  style={{width: 12, height: 12 ,  resizeMode: 'contain' , marginHorizontal:8}} />
-                                            <TextInput placeholder ='جستجو'  style={{alignItems:"center", width: 50, height:40 , fontSize:12, textAlign: 'right',fontFamily:"IRANSansWeb"}}/>
-                                </View>
+                                 <TouchableOpacity
+                                  style={{ alignItems :"center", flexDirection:'row-reverse', height :28 , width: 100 , borderRadius :35 , backgroundColor :"#ffff" ,}}
+                                  onPress={()=> this.props.navigation.navigate('Search' ,{from:'blog'})}>
+                                        <Image source={require('../../../../../assets/img/app_icons/magnifying-glass.png')}  style={{width: 12, height: 12 ,  resizeMode: 'contain' , marginHorizontal:8}} />
+                                        <Text  style={{alignItems:"center", width: 50, height:25,color:'#707070' , fontSize:12, textAlign: 'right',fontFamily:"IRANSansWeb"}}>جستجو</Text>
+                                    </TouchableOpacity>
                             </View>
                               <View style={{
                                  flex:1,
@@ -151,7 +158,8 @@ class Blog extends React.Component{
                                 flexDirection: "row",
                              }}>
 
-                                    <TouchableOpacity >
+                                    <TouchableOpacity 
+                                         onPress={()=> this.props.navigation.navigate('MyProfile')}>
                                       <Image source={require('../../../../../assets/img/profilepic.jpeg')}  style={{width: 45, height: 45 , borderRadius:45/2 }} />
                                     </TouchableOpacity>
                              </View>

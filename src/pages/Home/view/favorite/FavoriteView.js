@@ -30,6 +30,16 @@ class FavoriteView extends React.Component{
             }
 
     }
+    onPress(value){
+        console.log(value);
+        this.props.navigation.navigate('Blog',{
+            id: value.id,
+            liked: value.liked,
+            title: value.title,
+            text: value.text,
+            src: value.src,
+        })
+    }
     render(){
         
         return(
@@ -42,8 +52,9 @@ class FavoriteView extends React.Component{
     keyExtractor = {(item,index)=>index.toString()}
     showsVerticalScrollIndicator = {false}
     renderItem = {({item})=>(
-                        <View style={{alignItems:"center", margin:5, width:SCREEN_WIDTH-25 ,height:SCREEN_HEIGHT/4 }}>
-                            <View style={{flex : 3}}><TouchableOpacity >
+                        <TouchableOpacity activeOpacity={1} style={{alignItems:"center", margin:5, width:SCREEN_WIDTH-25 ,height:SCREEN_HEIGHT/4 }}
+                        onPress={()=> this.onPress(item)}>
+                            <View style={{flex : 3}}><TouchableOpacity  activeOpacity={1} onPress={()=> this.onPress(item)}>
                                 <Image source={item.src} style={styles.cardItem} />
                                 
                             
@@ -88,7 +99,7 @@ class FavoriteView extends React.Component{
                                         </Text>
                                     </View> 
                                 </View>
-                            </View>
+                            </TouchableOpacity>
                     )}/>
                 </View>
                       ):(
@@ -99,7 +110,8 @@ class FavoriteView extends React.Component{
                     keyExtractor = {(item,index)=>index.toString()}
                     showsVerticalScrollIndicator = {false}
                     renderItem = {({item})=>(
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                        onPress={() =>{ this.props.navigation.navigate('Nbuy',{'courseid':item.id,'price':item.price,'target':item.target,"src":item.src,teacher:item.teacher,title:item.title})}}>
                         <View style={{alignItems:"center", margin:10, width:SCREEN_WIDTH-25 ,height:SCREEN_HEIGHT/5.5,borderRadius:25, }}>
                               <View style={{backgroundColor:item.color,flexDirection:'row' ,alignItems:"center", margin:10, width:SCREEN_WIDTH-25 ,height:SCREEN_HEIGHT/6,borderRadius:25, }}>
                                 <View style={{alignItems:"center", flex:1,borderRadius:25 ,opacity:.5  ,height:SCREEN_HEIGHT/6,backgroundColor:"#FFF",flexDirection:'column'}}>
