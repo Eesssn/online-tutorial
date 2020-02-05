@@ -1,9 +1,58 @@
 import React,{Component} from 'react';
-import {View ,Text ,TouchableOpacity,StyleSheet,Dimensions} from 'react-native';
-import ViewPager from "@react-native-community/viewpager";
-import One from "./page1"
-import Two from "./page2"
-import Three from "./page3"
+import { StyleSheet, View, Text, Image, I18nManager, Dimensions } from 'react-native';
+
+import AppIntroSlider from 'react-native-app-intro-slider';
+
+I18nManager.forceRTL(false);
+
+const styles = StyleSheet.create({
+  mainContent: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  title: {
+    padding : 5,
+    textAlign: 'center',
+    color: '#fff',
+    fontFamily:"IRANSansWeb"
+  },
+
+
+});
+
+const slides = [
+  {
+    key: 'somethun',
+    title:'عنوان اول',
+    text:'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. ',
+    image: require('../../../assets/img/img_intro/1.png'),
+      backgroundColor: '#f4f4f4',
+      title_style:{ fontFamily:'Lalezar-Regular'},
+     text_style: {fontFamily:"IRANSansWeb" ,textAlign:'center'}
+    
+  },
+  {
+    key: 'somethun1',
+    title:'عنوان دوم',
+    text:'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.    ',
+      image: require('../../../assets/img/img_intro/2.png'),
+      backgroundColor: '#251A51',
+      title_style:{ fontFamily:'Lalezar-Regular',color:'#ffff'},
+      text_style: {fontFamily:"IRANSansWeb" ,textAlign:'center',color:'#ffff'}
+    
+  },
+  {
+    key: 'somethun2',
+    title:'عنوان سوم',
+    text:'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.    ',
+    image: require('../../../assets/img/img_intro/3.png'),
+    backgroundColor: '#f1fcfc',
+    title_style:{ fontFamily:'Lalezar-Regular'},
+    text_style: {fontFamily:"IRANSansWeb" ,textAlign:'center'}
+   
+  },
+];
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -12,136 +61,55 @@ class AppIntro extends Component{
   static navigationOptions = {
     headerShown: false,
 };
-    constructor(props) {
-        super(props)
-    
-        // Default state
-        this.state = {
-          btnText: 'ادامه',
-          opacity1: 1,
-          opacity2: 0.5,
-          opacity3: 0.5,
-                   
-        }
+
+_renderItem = ({ item, dimensions }) => (
+  <View style={{ backgroundColor: item.backgroundColor,flex: 1, flexDirection: "column" ,justifyContent :"flex-start" , alignItems: "center"}}>
+<View>
+<Image source={item.image}  style={{width:SCREEN_WIDTH>700?( SCREEN_WIDTH/10*3.5):( SCREEN_WIDTH/10*8), height: SCREEN_WIDTH>700?( SCREEN_WIDTH/10*3.5):( SCREEN_WIDTH/10*8)}} />
+</View>
+<View style={{paddingTop :30}}>
+<Text style={item.title_style}>{item.title}</Text>
+</View>
+<View style={{padding :15,paddingTop : 30 }}>
+<Text style={item.text_style}>{item.text}</Text>
+
+</View>
+</View>
+);
    
-}
-onPress =() =>{
-    counter ++
-    this.viewPager.setPage(parseFloat(counter))
-    if (counter == 2){
-        this.setState({
-          btnText: "شروع کن"
-        })
-    }
-    if (counter== 1){
-      this.setState({
-        opacity1: 0.5,
-        opacity2: 1,
-        opacity3: 0.5,
-      })
-    }
-    else if (counter == 2){
-      this.setState({
-        opacity1: 0.5,
-        opacity2: 0.5,
-        opacity3: 1,
-      })    
-    }
-    else if(counter == 3){
+
+
+ 
+     // 
       
-      this.props.navigation.navigate('Details')
-      
-    }
-}
+    
+
     render(){
-        const btnText = this.state;
-        return(
-            <View style={styles.container}>
         
-            <View style={styles.main}>
-            
-                <ViewPager
-                    style={styles.viewPager}
-                    initialPage={0}
-                    scrollEnabled = {false}
-                    ref={(viewPager) => {this.viewPager = viewPager}}
-                    >
-                    <View key="0">
-                    <One/>
-                    </View>
-                    <View key="1">
-                    <Two/>
-                    </View>
-                    <View key="2">
-                    <Three/>
-                    </View>
-                </ViewPager>
-        <View style={{ backgroundColor: counter == 1?("#251A51"):(null), alignItems: "center",height:SCREEN_HEIGHT/10*2,width: SCREEN_WIDTH,marginBottom: 5 }}>
-        <View style={{ flexDirection:'row',justifyContent:'space-around', alignItems:'center', width: 75, height: 50}} >
-          <View style={{borderRadius:45,width: 8, height: 8, backgroundColor:'#EDC483',opacity :this.state.opacity1}} />
-          <View style={{borderRadius:45,width: 8, height: 8, backgroundColor:'#EDC483',opacity :this.state.opacity2}} />
-          <View style={{borderRadius:45,width: 8, height: 8, backgroundColor:'#EDC483',opacity :this.state.opacity3}} />
-        </View>
-          <TouchableOpacity style={styles.btn_login} onPress={this.onPress}>
-              <Text style={styles.title}> {this.state.btnText} </Text>
-          </TouchableOpacity>
-        </View>
+        return(
+          <AppIntroSlider
+          slides={slides}
+          renderItem={this._renderItem}
+          // bottomButton
+          bottomButton
+          nextLabel={'بعدی'}
+          doneLabel={'شروع'}
           
-        </View>
-      
-      </View>
-        )
+          activeDotStyle	={{backgroundColor:'#EDC483'}}
+          buttonStyle={{
+          
+            marginTop:1,
+            borderRadius:45,
+            backgroundColor:'#8AA9FC',
+            alignItems:'center'}}
+            buttonTextStyle={{fontFamily:"IRANSansWeb" }}
+            onDone={()=>{ this.props.navigation.navigate('Details')}}
+          // hideNextButton
+          // hideDoneButton
+          // onSkip={() => console.log("skipped")}
+        />
+      );
     };
 }
-const styles = StyleSheet.create({
-    container: {
-      flex: 1
 
-      
-    },
- 
-    main: {
-      flex: 1,
-     
-    },
-    item: {
-      height: 200,
-      width: 375,
-      marginTop: 10,
-      backgroundColor: 'green'
-    },
-    text: {
-      color: '#ffffff',
-      fontSize: 40
-    },
-    viewPager: {
-        height: SCREEN_HEIGHT/10*8,
-    },
-    bbar: {
-        
-        backgroundColor: counter=== 1?("#2365"):(null),
-        alignItems: "center",
-       
-        
-        height:SCREEN_HEIGHT/10*2,
-        width: SCREEN_WIDTH,
-       
-        marginBottom: 5
-
-      },
-    btn_login: {
-        width : 162,
-        height :40,
-        marginTop:1,
-        borderRadius:45,
-        backgroundColor:'#8AA9FC',
-        alignItems:'center'
-      },
-      title: {
-        padding : 5,
-        textAlign: 'center',
-        color: '#fff',
-        fontFamily:"IRANSansWeb"
-      },
-  });
 export default AppIntro;

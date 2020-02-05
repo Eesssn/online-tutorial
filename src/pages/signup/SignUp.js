@@ -90,7 +90,7 @@ class SingUp extends Component {
         </View>
         <View style={styles.input_style}>
             <Image source={require('../../../assets/img/singup/key.png')}  style={{width: 20, height: 20 ,  resizeMode: 'contain', marginLeft :5 ,marginRight:30}} />
-            <TextInput placeholder ='رمز عبور' secureTextEntry={true}  style={{width: 300,textAlign: 'right',fontFamily:"IRANSansWeb"}}/>
+            <TextInput placeholder ='تکرار رمز عبور' secureTextEntry={true}  style={{width: 300,textAlign: 'right',fontFamily:"IRANSansWeb"}}/>
         </View>
       
     
