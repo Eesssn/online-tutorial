@@ -72,7 +72,7 @@ class ChangePass extends Component {
                                 </View>
                                 <View style={styles.input_style}>
                                     <Image source={require('../../../assets/img/singup/key.png')}  style={{width: 20, height: 20 ,  resizeMode: 'contain', marginLeft :5 ,marginRight:40}} />
-                                    <TextInput placeholder ='رمز عبور جدید' secureTextEntry={true}  style={{width:  SCREEN_WIDTH-40,textAlign: 'right',fontFamily:"IRANSansWeb"}}/>
+                                    <TextInput placeholder ='تکرار رمز عبور جدید' secureTextEntry={true}  style={{width:  SCREEN_WIDTH-40,textAlign: 'right',fontFamily:"IRANSansWeb"}}/>
                                 </View>
                             
                             
