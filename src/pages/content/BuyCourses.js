@@ -112,7 +112,7 @@ class BuyCourses extends React.Component{
                                     keyExtractor={(item,index)=> index.toString()}
                                     renderItem ={({item})=>(
                                         <TouchableOpacity
-                                            style={{width: 80 ,height:60 , flexDirection:'column' ,alignItems:'center', justifyContent:'center'}}
+                                            style={{width: 80 ,height:50 , flexDirection:'column' ,alignItems:'center', justifyContent:'center'}}
                                             onPress={() => this.onPressHandler(item)}>
                                             <View style={{marginVertical:5, width:80 , height:2 , backgroundColor:this.state.selectedItem === item.id ? '#251A51' : '#70707099'}}/>
                                             <Text style={{height:25,fontFamily:'IRANSansWeb' ,fontSize:12, color:this.state.selectedItem === item.id ? '#251A51' : '#70707099'}}>{item.name}</Text>
@@ -140,7 +140,7 @@ class BuyCourses extends React.Component{
                                        <View s>
                                          <Image source={navigation.getParam('src')}  style={{margin: 2,marginTop:5, width: 45, height: 45 , borderRadius:45/2 }} />
                                        </View>
-                                       <View style={{height:65,width:270,flexDirection:'column',}}>
+                                       <View style={{height:65,width:SCREEN_WIDTH-76,flexDirection:'column',}}>
                                        <Text style ={styles.user_text}>{ item.name} | {item.title} </Text>
                                        <Text numberOfLines={2} ellipsizeMode="middle"  style ={styles.comment_text}>{item.coursetext}</Text>
                                        <View style={{flexDirection:"row",marginTop:-10}}>

@@ -117,12 +117,16 @@ class FormComplet extends Component {
     onPresscontinues = ()=>{
         this.props.navigation.navigate('Master')
     }
+    componentDidMount(){
+        console.log(Dimensions.get('window').height)
+    }
     render(){
      
     
         
         return(
             <View style={styles.container}>
+            <View style={{height:(Dimensions.get('window').height)/10*5 ,alignItems:'center'}}>
                 <Text style={styles.title}>لطفا کد ارسالی به شماره تلفن ثبت شده را در کادر زیر بصورت کامل وارد کنید</Text>
                 <Image source={require('../../../assets/img/app_icons/mail.png')}  style={styles.icon} />
                 <View style={styles.verificationpad}>
@@ -137,7 +141,9 @@ class FormComplet extends Component {
                         <Text style={styles.btn_title}> تایید </Text>
                     </TouchableOpacity>
                 </View>
-                <View style={{marginTop:20 ,padding : 10 ,backgroundColor :'white'}}>
+                </View>
+                <View style={{height:(Dimensions.get('window').height)/10*2}}>
+                <View style={{backgroundColor:'#FFFF'}}>
                 <View style={styles.keypad}>
                     <TouchableOpacity  onPress={e => this.onPress("1") } style={styles.card}><Text style={styles.verificationpad_text}>1</Text></TouchableOpacity>
                     <TouchableOpacity  onPress={e => this.onPress("2") } style={styles.card}><Text style={styles.verificationpad_text}>2</Text></TouchableOpacity>
@@ -159,6 +165,9 @@ class FormComplet extends Component {
                     <TouchableOpacity onPress={e => this.backspace("CE") } style={styles.card}><Text style={styles.verificationpad_text}>←</Text></TouchableOpacity>
                 </View>
                 </View>
+                </View>
+                
+               
                 
             </View>        
 

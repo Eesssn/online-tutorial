@@ -47,26 +47,26 @@ class FavoriteView extends React.Component{
                {this.props.id == "content" ? (
                 <View style ={styles.container}>
 
-<FlatList
-    data={this.state.BlogData2}
-    keyExtractor = {(item,index)=>index.toString()}
-    showsVerticalScrollIndicator = {false}
-    renderItem = {({item})=>(
-                        <TouchableOpacity activeOpacity={1} style={{alignItems:"center", margin:5, width:SCREEN_WIDTH-25 ,height:SCREEN_HEIGHT/4 }}
-                        onPress={()=> this.onPress(item)}>
-                            <View style={{flex : 3}}><TouchableOpacity  activeOpacity={1} onPress={()=> this.onPress(item)}>
+                <FlatList
+                    data={this.state.BlogData2}
+                    keyExtractor = {(item,index)=>index.toString()}
+                    showsVerticalScrollIndicator = {false}
+                    renderItem = {({item})=>(
+                        <TouchableOpacity activeOpacity={1} style={{alignItems:"center", margin:5, width:SCREEN_WIDTH-25 ,height:180}} onPress={()=> this.onPress(item)}>
+                             <View style={{flex : 1}}>
+                             <View >
                                 <Image source={item.src} style={styles.cardItem} />
                                 
-                            
-                            </TouchableOpacity></View>
-                            <View style={{flex: 1,width:SCREEN_WIDTH-30,height:25}}><Text></Text></View>
+                               
+                            </View></View>
+                             <View style={{flex: 1,width:SCREEN_WIDTH-30,height:25}}><Text></Text></View>
 
                                 <View style={styles.cardContent}>
                                     <View style={{flexDirection:'row',alignItems:"center",width:SCREEN_WIDTH-80 ,height:20}}>
                                         <View style={{flexDirection:'row',flex:1,height:20 ,alignItems:"center"}}>
-                                        {/* Dont forget change like icon */}
-                                        <Image source={require('../../../../../assets/img/app_icons/like.png')} style={{marginHorizontal:5 ,width:15,height:15,resizeMode: 'contain' }}/>
-                                            <Text style={{
+                                    
+                                        <Image source={require('../../../../../assets/img/app_icons/like.png')} style={{marginHorizontal:5, width:15,height:15,resizeMode: 'contain' }}/>
+                                             <Text style={{
                                                     fontFamily:'IRANSansWeb' ,
                                                     fontSize:12,
                                                     color:'#707070',
@@ -99,8 +99,11 @@ class FavoriteView extends React.Component{
                                         </Text>
                                     </View> 
                                 </View>
-                            </TouchableOpacity>
+                                
+                             </TouchableOpacity>
+                             
                     )}/>
+                    <View style={{height:20}}/>
                 </View>
                       ):(
                 <View style ={styles.container}>
@@ -110,15 +113,16 @@ class FavoriteView extends React.Component{
                     keyExtractor = {(item,index)=>index.toString()}
                     showsVerticalScrollIndicator = {false}
                     renderItem = {({item})=>(
-                        <TouchableOpacity
-                        onPress={() =>{ this.props.navigation.navigate('Nbuy',{'courseid':item.id,'price':item.price,'target':item.target,"src":item.src,teacher:item.teacher,title:item.title})}}>
+                        <TouchableOpacity onPress={() =>{ this.props.navigation.navigate('Nbuy',{'courseid':item.id,'price':item.price,'target':item.target,"src":item.src,teacher:item.teacher,title:item.title})}}>
                         <View style={{alignItems:"center", margin:10, width:SCREEN_WIDTH-25 ,height:SCREEN_HEIGHT/5.5,borderRadius:25, }}>
                               <View style={{backgroundColor:item.color,flexDirection:'row' ,alignItems:"center", margin:10, width:SCREEN_WIDTH-25 ,height:SCREEN_HEIGHT/6,borderRadius:25, }}>
                                 <View style={{alignItems:"center", flex:1,borderRadius:25 ,opacity:.5  ,height:SCREEN_HEIGHT/6,backgroundColor:"#FFF",flexDirection:'column'}}>
-                                    <Image 
+                                    <View style={{flex: 1}}><Image 
                                         source={require('../../../../../assets/img/app_icons/information.png')}
                                         style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain' ,marginTop:20}}
                                     /> 
+                                    </View>
+                                    <View style={{flex: 1}}>
                                     <Text style={{
                                                         fontFamily:'IRANSansWeb' ,
                                                         fontSize:18,
@@ -128,6 +132,8 @@ class FavoriteView extends React.Component{
 
                                                             {persify(item.numberos)}
                                                 </Text>
+                                                </View>
+                                                <View style={{flex: 1 ,marginTop:15}}>
                                     <Text style={{
                                             fontFamily:'IRANSansWeb' ,
                                             fontSize:10,
@@ -137,10 +143,11 @@ class FavoriteView extends React.Component{
 
                                                 دانشجویان دوره 
                                     </Text>
+                                    </View>
                                 </View>
                                 <View style={{flex:2 ,height:SCREEN_HEIGHT/6,flexDirection:"column"}}>
                                     <View style={{ flex:1 ,flexDirection: "column"}}>
-                                    <Text style={{
+                                    <Text numberOfLines={1} ellipsizeMode="tail" style={{
                                                     fontFamily:'IRANSansWeb' ,
                                                     fontSize:14,
                                                     color:"#FFFF",

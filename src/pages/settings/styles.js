@@ -41,7 +41,7 @@ export default StyleSheet.create({
   input_style:{
     marginEnd: 25,
     marginStart: 30,
-    width: 320,
+    width:SCREEN_WIDTH-20,
     height: 50,
     borderColor : 'black',
     borderWidth: .2,

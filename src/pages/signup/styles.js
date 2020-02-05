@@ -1,12 +1,11 @@
 import { StyleSheet, Dimensions } from 'react-native';
 const window = Dimensions.get('window');
 
-export const IMAGE_HEIGHT = window.width / 2;
-export const IMAGE_HEIGHT_SMALL = window.width /7;
 
 export default StyleSheet.create({
   container: {
     width : window.width,
+    height:window.height,
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
@@ -22,11 +21,13 @@ export default StyleSheet.create({
     
   },
   logo: {
-    height: IMAGE_HEIGHT,
+    width:Dimensions.get('window').width/4,
+    height:Dimensions.get('window').width/4,
     resizeMode: 'contain',
     marginBottom: 10,
     padding:10,
-    marginTop:IMAGE_HEIGHT_SMALL
+    
+    
   },
   register:{
     marginBottom:20, 

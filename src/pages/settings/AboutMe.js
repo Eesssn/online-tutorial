@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Image  ,Text ,View , TouchableOpacity,Dimensions,TextInput} from 'react-native'
+import {Image  ,Text ,View , ScrollView,Dimensions,TextInput} from 'react-native'
 import styles from './styles';
 import LogoTitle from './LogTitle'
 import logo from '../../../assets/img/app_icon.png';
@@ -44,10 +44,11 @@ class AboutMe extends Component {
             <View
                 style={{
                     width:SCREEN_WIDTH,
-                    height: SCREEN_HEIGHT-20,
+                    height: SCREEN_HEIGHT-80,
                     flexDirection:'column',
                     
                 }}>
+                <ScrollView>
 
                     <View 
                         style={{
@@ -78,6 +79,7 @@ class AboutMe extends Component {
                         </View>
                             
                     </View>
+                    </ScrollView>
             </View>
         )
     };

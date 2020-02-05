@@ -81,7 +81,7 @@ class Search extends React.Component{
                 onChangeText={searchTerm => this.setState({ searchTerm })}
               />                          
             </View>
-            <>
+            <View style={{height:SCREEN_HEIGHT}}>
             {ignoreCase ? (
                 <SearchableFlatList
               style={styles.list}
@@ -91,8 +91,9 @@ class Search extends React.Component{
               searchAttribute={searchAttribute}
               ignoreCase={ignoreCase}
               renderItem={({ item }) => (
-                <TouchableOpacity activeOpacity={1} style={{alignItems:"center", margin:5, width:SCREEN_WIDTH-25 ,height:SCREEN_HEIGHT/4 }} onPress={()=> this.onPress(item)}>
-                             <View style={{flex : 3}}><View >
+                <TouchableOpacity activeOpacity={1} style={{alignItems:"center", margin:5, width:SCREEN_WIDTH-25 ,height:180}} onPress={()=> this.onPress(item)}>
+                             <View style={{flex : 1}}>
+                             <View >
                                 <Image source={item.src} style={styles.cardItem} />
                                 
                                
@@ -137,13 +138,14 @@ class Search extends React.Component{
                                         </Text>
                                     </View> 
                                 </View>
+                                
                              </TouchableOpacity>
 
 
               )}
               keyExtractor={item => item.id}
             />
-            ):(
+            ):(<View style={{height:SCREEN_HEIGHT+10}}>
                 <SearchableFlatList
               style={styles.list}
               showsVerticalScrollIndicator = {false}
@@ -152,14 +154,17 @@ class Search extends React.Component{
               searchAttribute={searchAttribute}
               ignoreCase={ignoreCase}
               renderItem={({ item }) => (
-                <TouchableOpacity onPress={() =>{ this.props.navigation.navigate('Nbuy',{'courseid':item.id,'price':item.price,'target':item.target,"src":item.src,teacher:item.teacher,title:item.title})}}>
-                        <View style={{alignItems:"center", margin:10, width:SCREEN_WIDTH-45 ,height:SCREEN_HEIGHT/5.5,borderRadius:25, }}>
+                <TouchableOpacity onPress={() =>{ this.props.navigation.navigate('Nbuy',{'courseid':item.id,'price':item.price,'target':item.target,"src":item.src,teacher:item.teacher,title:item.title})}}
+                    style={{height:SCREEN_HEIGHT/4.6}}>
+                        <View style={{alignItems:"center", margin:5, width:SCREEN_WIDTH-25 ,height:SCREEN_HEIGHT/5.5,borderRadius:25, }}>
                               <View style={{backgroundColor:item.color,flexDirection:'row' ,alignItems:"center", margin:10, width:SCREEN_WIDTH-25 ,height:SCREEN_HEIGHT/6,borderRadius:25, }}>
                                 <View style={{alignItems:"center", flex:1,borderRadius:25 ,opacity:.5  ,height:SCREEN_HEIGHT/6,backgroundColor:"#FFF",flexDirection:'column'}}>
-                                    <Image 
+                                    <View style={{flex: 1}}><Image 
                                         source={require('../../../assets/img/app_icons/information.png')}
                                         style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain' ,marginTop:20}}
                                     /> 
+                                    </View>
+                                    <View style={{flex: 1}}>
                                     <Text style={{
                                                         fontFamily:'IRANSansWeb' ,
                                                         fontSize:18,
@@ -169,6 +174,8 @@ class Search extends React.Component{
 
                                                             {persify(item.numberos)}
                                                 </Text>
+                                                </View>
+                                                <View style={{flex: 1 ,marginTop:15}}>
                                     <Text style={{
                                             fontFamily:'IRANSansWeb' ,
                                             fontSize:10,
@@ -178,10 +185,11 @@ class Search extends React.Component{
 
                                                 دانشجویان دوره 
                                     </Text>
+                                    </View>
                                 </View>
                                 <View style={{flex:2 ,height:SCREEN_HEIGHT/6,flexDirection:"column"}}>
                                     <View style={{ flex:1 ,flexDirection: "column"}}>
-                                    <Text style={{
+                                    <Text numberOfLines={1} ellipsizeMode="tail" style={{
                                                     fontFamily:'IRANSansWeb' ,
                                                     fontSize:14,
                                                     color:"#FFFF",
@@ -237,7 +245,7 @@ class Search extends React.Component{
                                             alignItems:'center',
                                             justifyContent:'center',
                                             position:'absolute',
-                                            bottom:"10%",left:90
+                                            bottom:"10%",left:SCREEN_WIDTH/10*2
                                             } }>
                                     <Text style={{fontSize:10, fontFamily:"Lalezar-Regular", color:"#251A51"}}> رایگان</Text>
                                 </View>
@@ -250,9 +258,11 @@ class Search extends React.Component{
               )}
               keyExtractor={item => item.id}
             />
+            </View>
             )}
+            
            
-          </>
+          </View>
           
       </View>
       </View>
@@ -318,7 +328,10 @@ const styles = StyleSheet.create({
         
       },
       list:{
-          marginTop: 10
+          marginTop: 10,
+          
+          
+        
       }
   });
   

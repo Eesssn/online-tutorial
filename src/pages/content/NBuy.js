@@ -33,8 +33,67 @@ class Nbuy extends React.Component{
             <View style={styles.container}>
                 <View style={styles.shadow}>
                     {/* header */}
-                   
                     <View style={styles.header}>
+                        <View style={{width:SCREEN_WIDTH ,flex :1 , alignItems:"center" ,flexDirection:'row'}}>
+                           <View style={{flex:1 ,height:60, alignItems:'flex-start',justifyContent:'center'}}>
+                                <TouchableOpacity  onPress={this.onPressheader}>
+                                        <Image
+                                            style={styles.back}
+                                            source={require('../../../assets/img/app_icons/undo.png')}
+                                            />
+                                    </TouchableOpacity>
+                           </View>
+                           <View style={{flex:1 ,height:60, alignItems:'center',justifyContent:'center'}}>
+                                <Image source={navigation.getParam('src')}  style={{width: 46, height: 46 , borderRadius:46/2 ,resizeMode:'cover' }} />
+                           </View>
+                           <View style={{flex:1 ,height:60, alignItems:'center',justifyContent:'center'}}>
+                           {navigation.getParam('target')== 1 ? (
+                                    <View style={styles.btn_isoffer}>
+                                        <Text style={styles.offer_text}>دوره هدف </Text>
+                                    </View>
+                                ):( <></>)}
+
+                           </View>
+                        </View>
+                        <View style={{flexDirection:'column', width:SCREEN_WIDTH,flex:1,alignItems:'center',justifyContent:'flex-start'}}>
+                            <Text style={{alignItems:"center",color:'#ffff' , fontSize:16, textAlign: 'right',fontFamily:"IRANSansWeb"}}>{navigation.getParam('title')}</Text>
+                            <Text style={{alignItems:"center",color:'#ffff' , fontSize:12, textAlign: 'right',fontFamily:"IRANSansWeb"}}>استاد دوره : {navigation.getParam('teacher')}</Text>
+                        </View>
+
+                        <TouchableOpacity style={styles.btn_login} 
+                            onPress={() =>{ this.props.navigation.navigate('Buy',{'chapternumber':5 , part: 5,'courseid':navigation.getParam('id'),"src":navigation.getParam('src'),teacher:navigation.getParam('teacher'),title:navigation.getParam('title')})}}>
+
+                            <Text style={styles.btn_title}>{navigation.getParam('price') == 0 ? ("شروع دوره"):("خرید دوره")  }</Text>
+                            {navigation.getParam('price') == 0 ? (
+                            <View style={{
+                                        width : 70,
+                                        height :18,
+                                        borderRadius:45,
+                                        backgroundColor:'#9DFB45',
+                                        alignItems:'center',
+                                        justifyContent:'center',
+                                        position:'absolute',
+                                        bottom:-10,right:5
+                                        } }>
+                                <Text style={{fontSize:10, fontFamily:"Lalezar-Regular", color:"#251A51"}}> رایگان</Text>
+                            </View>
+                                    ):( <View style={{
+                                        width : 70,
+                                        height :18,
+                                        borderRadius:45,
+                                        backgroundColor:'#9DFB45',
+                                        alignItems:'center',
+                                        justifyContent:'center',
+                                        position:'absolute',
+                                        bottom:-12,right:"35%"
+                                        } }>
+                                <Text style={{fontSize:10, fontFamily:'IRANSansWeb', color:"#251A51"}}> {persify( navigation.getParam('price'))} تومان </Text>
+                            </View>)}
+
+                        </TouchableOpacity>
+                    </View>
+                   
+                    {/* <View style={styles.header}>
                         <View style={{width:SCREEN_WIDTH  , height: 40 ,marginTop:10, alignItems:"center",justifyContent:"flex-start",flexDirection:"row"}}>
                             <TouchableOpacity style={{flex:1, height:20 ,alignItems:"flex-start",justifyContent:'flex-start'}} onPress={this.onPressheader}>
                                 <Image
@@ -90,7 +149,7 @@ class Nbuy extends React.Component{
 
 </TouchableOpacity>
 
-                    </View>
+                    </View> */}
                     
                     <View style={styles.header_content}>
                         <View style={{marginTop:40, alignItems:'center',flexDirection:'row-reverse', justifyContent: 'space-between',}}>
@@ -106,7 +165,7 @@ class Nbuy extends React.Component{
                                 renderItem ={({item})=>(
                                     <>
                                     
-                                    <View style={{marginTop:12, alignItems:'center',flexDirection:'row-reverse', justifyContent: 'space-between',}}>
+                                    <View style={{marginTop:15, alignItems:'center',flexDirection:'row-reverse', justifyContent: 'space-between',}}>
                                         <View style={{margin:5,borderRadius:5/2, width:5,height:5 , backgroundColor:"#000000"}}></View><Text style={{marginHorizontal:5, color:'#251A51',fontFamily:"IRANSansWeb",}}>{item.title}</Text>
                                     </View>
                                     
@@ -278,7 +337,7 @@ const styles = StyleSheet.create({
         width : 250,
         height :45,
         margin:5,
-        marginTop:10,
+        marginTop:5,
         borderRadius:45,
         backgroundColor:'#8AA9FC',
         alignItems:'center',

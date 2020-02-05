@@ -9,8 +9,8 @@ export default StyleSheet.create({
     width : window.width,
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    marginTop : 50,
+    
+    
   },
   input: {
     height: 50,
@@ -24,8 +24,8 @@ export default StyleSheet.create({
   },
 
  title:{
-     padding:25,
-     fontSize:18,
+     padding:5,
+     fontSize:15,
      color:'#707070',
      fontFamily:"IRANSansWeb",
      justifyContent: 'center',
@@ -58,7 +58,7 @@ forget_style:{
 btn_login: {
     width : 304,
     height :50,
-    marginTop:20,
+    marginTop:10,
     borderRadius:45,
     backgroundColor:'#8AA9FC',
     alignItems:'center',
@@ -138,14 +138,14 @@ btn_login: {
   keypad:{
     justifyContent:'center',
     flexDirection:'row',
-    height: 68,
+    
 
   },
   
     card:{
       borderRadius:5,
-      width: 110,
-      height: 60,
+      width: (Dimensions.get('window').width/10*3),
+      height: (Dimensions.get('window').height/10*.7),
       shadowColor: '#00000021',
       shadowOffset: {
         width: 0,

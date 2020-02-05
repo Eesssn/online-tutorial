@@ -1,7 +1,8 @@
 import React from 'react';
-import { View ,Text ,TouchableOpacity ,Image,Dimensions ,StyleSheet ,Switch,Share} from 'react-native';
+import { View ,Text ,TouchableOpacity ,Image,Dimensions ,StyleSheet ,Switch,Share,ScrollView} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import persify from "persify"
+
 
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -70,7 +71,7 @@ class Profile extends React.Component{
                     style={{
                         backgroundColor:"#8aa9fc",
                         width: SCREEN_WIDTH,
-                        height: "23%",
+                        height: 180,
                         flexDirection:"column",
                         marginLeft:0, marginRight:-5,marginTop:-5,
                         borderBottomLeftRadius: 35,
@@ -102,8 +103,10 @@ class Profile extends React.Component{
                             <Text style={{  padding:5,fontSize:20,color:'#ffffff',fontFamily:'Lalezar-Regular',alignItems: "center",}}>{name}</Text>
                          </View>
                     </View>
+                  
                     {/* content */}
                     <View style={styles.main_content}>
+                        <ScrollView contentContainerStyle={{alignItems:'center'}} style={{width:SCREEN_WIDTH-10,}}>
                         <View style={styles.main_info}>
                             {/* info box  */}
                             <View style={{flex:1 }}>
@@ -122,7 +125,8 @@ class Profile extends React.Component{
                                 <View style={{margin:2,flex:1 ,justifyContent:'center' ,alignItems:'center'}}><Text style={{textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:18 ,color:"#8AA9FC"}} >{persify(passed)}</Text></View>
                             </View>
                         </View>
-                        {/* navigation content */}
+                        {/* navigation content */}  
+                      
                         <View style={styles.main_navigation}>
                             <View>
                                 <View style={styles.no_style}>
@@ -162,9 +166,13 @@ class Profile extends React.Component{
                                 </View>
                             </TouchableOpacity>
                         </View>
-
+                        <View style={{height:120}}/>
+                        </ScrollView>
+                       
+                        
+                    
                     </View>
-
+                   
                     
             </View>
         )
@@ -189,7 +197,8 @@ const styles = StyleSheet.create({
     },
     main_content:{
         width: SCREEN_WIDTH,
-        height: "100%",
+        height: SCREEN_HEIGHT,
+        flex: 1,
         flexDirection:"column",
         justifyContent:"flex-start",
         alignItems:"center"

@@ -48,7 +48,7 @@ onPress =() =>{
       })    
     }
     else if(counter == 3){
-      counter = 0
+      
       this.props.navigation.navigate('Details')
       
     }
@@ -76,7 +76,7 @@ onPress =() =>{
                     <Three/>
                     </View>
                 </ViewPager>
-        <View style={styles.bbar}>
+        <View style={{ backgroundColor: counter == 1?("#251A51"):(null), alignItems: "center",height:SCREEN_HEIGHT/10*2,width: SCREEN_WIDTH,marginBottom: 5 }}>
         <View style={{ flexDirection:'row',justifyContent:'space-around', alignItems:'center', width: 75, height: 50}} >
           <View style={{borderRadius:45,width: 8, height: 8, backgroundColor:'#EDC483',opacity :this.state.opacity1}} />
           <View style={{borderRadius:45,width: 8, height: 8, backgroundColor:'#EDC483',opacity :this.state.opacity2}} />
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
  
     main: {
       flex: 1,
-      height :SCREEN_HEIGHT
+     
     },
     item: {
       height: 200,
@@ -115,18 +115,18 @@ const styles = StyleSheet.create({
       fontSize: 40
     },
     viewPager: {
-        flex: 1,
+        height: SCREEN_HEIGHT/10*8,
     },
     bbar: {
         
-       
+        backgroundColor: counter=== 1?("#2365"):(null),
         alignItems: "center",
-        position: "absolute",
-        bottom:0,
-        flex: 1,
+       
+        
+        height:SCREEN_HEIGHT/10*2,
         width: SCREEN_WIDTH,
        
-        marginBottom: 10
+        marginBottom: 5
 
       },
     btn_login: {

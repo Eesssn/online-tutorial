@@ -10,7 +10,7 @@ class page1 extends Component{
         return(
             <View style={{flex: 1, flexDirection: "column" ,justifyContent :"flex-start" , alignItems: "center"}}>
         <View>
-            <Image source={require('../../../assets/img/img_intro/1.png')}  style={{width: SCREEN_WIDTH, height: SCREEN_HEIGHT/2}} />
+            <Image source={require('../../../assets/img/img_intro/1.png')}  style={{width:SCREEN_WIDTH>700?( SCREEN_WIDTH/10*3.5):( SCREEN_WIDTH/10*8), height: SCREEN_WIDTH>700?( SCREEN_WIDTH/10*3.5):( SCREEN_WIDTH/10*8)}} />
         </View>
         <View style={{paddingTop :30}}>
             <Text style={{ fontFamily:'Lalezar-Regular'}}>عنوان  اول</Text>

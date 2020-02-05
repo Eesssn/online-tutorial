@@ -109,7 +109,7 @@ class FormComplet extends Component {
             </View>
            
           </Modal>
-      <TouchableOpacity style={{marginBottom: 20, borderRadius:94/2, width:94,height:94, backgroundColor:'blue',  alignItems: 'center' ,justifyContent: 'center'}}
+      <TouchableOpacity style={{marginBottom: 10,marginTop:15, borderRadius:94/2, width:94,height:94, backgroundColor:'#9e9e9e',  alignItems: 'center' ,justifyContent: 'center'}}
        onPress={this.handleChosePhoto}>
                 {photo && (
                     <Image
@@ -192,7 +192,7 @@ class FormComplet extends Component {
             </View>
            
           </Modal>
-      <TouchableOpacity style={{marginBottom: 20, borderRadius:94/2, width:94,height:94, backgroundColor:'blue',  alignItems: 'center' ,justifyContent: 'center'}}
+      <TouchableOpacity style={{marginBottom: 20,marginTop:20, borderRadius:94/2, width:94,height:94, backgroundColor:'#9e9e9e',  alignItems: 'center' ,justifyContent: 'center'}}
        onPress={this.handleChosePhoto}>
                 {photo && (
                     <Image

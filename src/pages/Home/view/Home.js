@@ -146,11 +146,11 @@ class Home extends React.Component{
                                                 <View style={{
                                                                 flex: .5,
                                                                 flexDirection: 'row',
-                                                                justifyContent: 'space-between',
+                                                                
                                                                 alignItems:"center",
                                                                 justifyContent:"center"
                                                             }}>
-                                                                <View style={{alignItems:"center",justifyContent:"center",width: 30, height: 30}} >
+                                                                <View style={{ alignItems:"flex-start",justifyContent:"center",width: 20, height: 30,flex:1}} >
                                                                     {item.notifmod == 0 ? (<Image 
                                                                         source={require('../../../../assets/img/app_icons/mute.png')}
                                                                         style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain' ,}}
@@ -160,10 +160,10 @@ class Home extends React.Component{
                                                                     /> )}
                                                                     
                                                                 </View>
-                                                                <View style={{alignItems:"center",justifyContent:"center", width: 215, height: 30}} > 
-                                                                    <Text style={{textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:9}}>{item.chatname}</Text>
+                                                                <View style={{flex:6,alignItems:"center",justifyContent:"center", width: 215, height: 30}} > 
+                                                                    <Text numberOfLines={1} ellipsizeMode="middle" style={{textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:9}}>{item.chatname}</Text>
                                                                 </View>
-                                                                <View style={{alignItems:"center",justifyContent:"center", width: 30, height: 30}} >
+                                                                <View style={{flex:1,alignItems:"center",justifyContent:"center", width: 30, height: 30}} >
                                                                     <Image 
                                                                         source={require('../../../../assets/img/app_icons/idea.png')}
                                                                         style={{borderRadius:25/2, width:25,height:25,resizeMode: 'contain' ,}}
@@ -373,7 +373,7 @@ const styles = StyleSheet.create({
                 borderBottomLeftRadius:20 ,
                 borderTopLeftRadius:20, 
                 backgroundColor:"#ffffff" ,
-                width :SCREEN_WIDTH/1.2 ,
+                width :SCREEN_WIDTH/10*9,
                 height : 35 ,
                 justifyContent :"center" ,
                 alignItems:"flex-end" ,

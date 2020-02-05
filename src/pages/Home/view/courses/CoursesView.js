@@ -18,10 +18,14 @@ class CoursesView extends React.Component{
                 {id: 0 , src: require('../../../../../assets/img/youroffer/2.jpg'),color:'#EDC483',title:'دوره مقدماتی درآمدزایی آمازون',teacher:'رضا حسینی',type:'مقدماتی', price:0,numberos:'52'},
                 {id: 1 , src: require('../../../../../assets/img/youroffer/1.jpg'),color:'#8AA9FC',title:'دوره پیشرفته درآمدزایی آمازون',teacher:'رضا حسینی',type:'پیشرفته', price:300000,numberos:'52'},
                 {id: 2 , src: require('../../../../../assets/img/youroffer/2.jpg'),color:'#E3707F',title:'دوره مقدماتی درآمدزایی آمازون',teacher:'رضا حسینی',type:'مقدماتی', price:0,numberos:'52'},
+                
 
             ]
             }
 
+    }
+    componentDidMount(){
+        console.log(Dimensions.get('window').height)
     }
     render(){
         return(
@@ -36,10 +40,12 @@ class CoursesView extends React.Component{
                         <View style={{alignItems:"center", margin:10, width:SCREEN_WIDTH-25 ,height:SCREEN_HEIGHT/5.5,borderRadius:25, }}>
                               <View style={{backgroundColor:item.color,flexDirection:'row' ,alignItems:"center", margin:10, width:SCREEN_WIDTH-25 ,height:SCREEN_HEIGHT/6,borderRadius:25, }}>
                                 <View style={{alignItems:"center", flex:1,borderRadius:25 ,opacity:.5  ,height:SCREEN_HEIGHT/6,backgroundColor:"#FFF",flexDirection:'column'}}>
-                                    <Image 
+                                    <View style={{flex: 1}}><Image 
                                         source={require('../../../../../assets/img/app_icons/information.png')}
                                         style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain' ,marginTop:20}}
                                     /> 
+                                    </View>
+                                    <View style={{flex: 1}}>
                                     <Text style={{
                                                         fontFamily:'IRANSansWeb' ,
                                                         fontSize:18,
@@ -49,6 +55,8 @@ class CoursesView extends React.Component{
 
                                                             {persify(item.numberos)}
                                                 </Text>
+                                                </View>
+                                                <View style={{flex: 1 ,marginTop:15}}>
                                     <Text style={{
                                             fontFamily:'IRANSansWeb' ,
                                             fontSize:10,
@@ -58,10 +66,11 @@ class CoursesView extends React.Component{
 
                                                 دانشجویان دوره 
                                     </Text>
+                                    </View>
                                 </View>
                                 <View style={{flex:2 ,height:SCREEN_HEIGHT/6,flexDirection:"column"}}>
                                     <View style={{ flex:1 ,flexDirection: "column"}}>
-                                    <Text style={{
+                                    <Text numberOfLines={1} ellipsizeMode="tail" style={{
                                                     fontFamily:'IRANSansWeb' ,
                                                     fontSize:14,
                                                     color:"#FFFF",
@@ -135,11 +144,11 @@ class CoursesView extends React.Component{
 const styles = StyleSheet.create({
     container:{
         width:SCREEN_WIDTH ,
-        height: SCREEN_HEIGHT-180,
+        height: Dimensions.get('window').height < 600 ?(SCREEN_HEIGHT-225):(SCREEN_HEIGHT-190),
         flexDirection:'column',
         alignItems:"center",
         justifyContent: "center",
-        marginTop:10
+        marginTop:10,
     
     },
     cardItem:{

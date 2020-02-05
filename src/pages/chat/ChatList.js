@@ -68,13 +68,14 @@ class ChatList extends React.Component{
                 <View style={styles.content}>
                     {/* chat list */}
                     <FlatList 
-                                style={{marginTop:5,flexDirection:'row-reverse', marginBottom:5}}
+                                
+                                
                                 showsHorizontalScrollIndicator={false}
                                 showsVerticalScrollIndicator={false}
                                 data={this.state.curseTitle}
                                 keyExtractor={(item,index)=> index.toString()}
                                 renderItem ={({item})=>(
-                                    <>
+                                    
                                     <TouchableOpacity
                                       onPress={() =>{ this.props.navigation.navigate('ChatBox' ,{ChatName:item.title})}}
                                      >
@@ -113,7 +114,7 @@ class ChatList extends React.Component{
                                         </View>
                                     </TouchableOpacity>
                                    
-                                    </>
+                                    
                                 )}/>
                 </View>
                 
@@ -147,6 +148,7 @@ const styles = StyleSheet.create({
     },
     content:{
         width:SCREEN_WIDTH,
+        flex:1,
         flexDirection: "column",
         alignItems: 'center',
         justifyContent:'center',

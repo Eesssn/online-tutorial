@@ -42,8 +42,9 @@ class BlogView extends React.Component{
                     keyExtractor = {(item,index)=>index.toString()}
                     showsVerticalScrollIndicator = {false}
                     renderItem = {({item})=>(
-                        <TouchableOpacity activeOpacity={1} style={{alignItems:"center", margin:5, width:SCREEN_WIDTH-25 ,height:SCREEN_HEIGHT/4 }} onPress={()=> this.onPress(item)}>
-                             <View style={{flex : 3}}><View >
+                        <TouchableOpacity activeOpacity={1} style={{alignItems:"center", margin:5, width:SCREEN_WIDTH-25 ,height:180}} onPress={()=> this.onPress(item)}>
+                             <View style={{flex : 1}}>
+                             <View >
                                 <Image source={item.src} style={styles.cardItem} />
                                 
                                
@@ -88,8 +89,12 @@ class BlogView extends React.Component{
                                         </Text>
                                     </View> 
                                 </View>
+                                
                              </TouchableOpacity>
+                             
                     )}/>
+                    <View style={{height:20}}/>
+                    
             </View>
             )
     }
