@@ -33,7 +33,7 @@ class Master extends Component{
             this.counter = 0;
           }, 3000);
           this.counter++;
-          ToastAndroid.show('Press again to exit.', ToastAndroid.SHORT);
+          ToastAndroid.show('جهت خروج  دوباره دکمه بازگشت را فشار دهید', ToastAndroid.SHORT);
           return true;
         }
       }
