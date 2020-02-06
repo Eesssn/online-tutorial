@@ -150,16 +150,7 @@ class Home extends React.Component{
                                                                 alignItems:"center",
                                                                 justifyContent:"center"
                                                             }}>
-                                                                <View style={{ alignItems:"flex-start",justifyContent:"center",width: 20, height: 30,flex:1}} >
-                                                                    {item.notifmod == 0 ? (<Image 
-                                                                        source={require('../../../../assets/img/app_icons/mute.png')}
-                                                                        style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain' ,}}
-                                                                    /> ):(<Image 
-                                                                        source={require('../../../../assets/img/app_icons/unmute.png')}
-                                                                        style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain' ,}}
-                                                                    /> )}
-                                                                    
-                                                                </View>
+                                                               
                                                                 <View style={{flex:6,alignItems:"center",justifyContent:"center", width: 215, height: 30}} > 
                                                                     <Text numberOfLines={1} ellipsizeMode="middle" style={{textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:9}}>{item.chatname}</Text>
                                                                 </View>
