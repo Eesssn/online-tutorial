@@ -32,6 +32,7 @@
     "react-native-video-player": "^0.10.0",
     "react-native-view-overflow": "^0.0.4",
     "react-navigation": "^4.0.10",
+    "react-navigation-backhandler": "^1.4.0",
     "react-navigation-stack": "^2.0.12",
     "react-navigation-tabs": "^2.7.0"
   },
