@@ -78,16 +78,19 @@ _renderItem = ({ item, dimensions }) => (
           renderItem={this._renderItem}
           // bottomButton
           bottomButton
-          nextLabel={'بعدی'}
+          nextLabel={'ادامه'}
           doneLabel={'شروع'}
-          
+       
           activeDotStyle	={{backgroundColor:'#EDC483'}}
           buttonStyle={{
-          
+           
+            height: 45,
             marginTop:1,
             borderRadius:45,
             backgroundColor:'#8AA9FC',
-            alignItems:'center'}}
+            alignItems:'center',
+            
+            }}
             buttonTextStyle={{fontFamily:"IRANSansWeb" }}
             onDone={()=>{ 
                           this.props.navigation.dispatch(resetAction)}}
