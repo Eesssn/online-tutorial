@@ -111,17 +111,17 @@ class Profile extends React.Component{
                         <View style={styles.main_info}>
                             {/* info box  */}
                             <View style={{flex:1 }}>
-                                <View style={{margin:2, flex:1 ,justifyContent:'center' ,alignItems:'center'}}><Image source={require('../../../../assets/img/app_icons/unmute.png')} style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain' }}/></View>
+                                <View style={{margin:2, flex:1 ,justifyContent:'center' ,alignItems:'center'}}><Image source={require('../../../../assets/img/app_icons/Group-404.png')} style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain' }}/></View>
                                 <View style={{margin:2,flex:1 ,justifyContent:'center' ,alignItems:'center'}}><Text style={{textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:10}} >دوره های در حال انجام</Text></View>
                                 <View style={{margin:2,flex:1 ,justifyContent:'center' ,alignItems:'center'}}><Text style={{textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:18 ,color:"#8AA9FC"}} >{persify(doing)}</Text></View>
                             </View>
                             <View style={{flex:1 }}>
-                                <View style={{margin:2, flex:1 ,justifyContent:'center' ,alignItems:'center'}}><Image source={require('../../../../assets/img/app_icons/unmute.png')} style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain' }}/></View>
+                                <View style={{margin:2, flex:1 ,justifyContent:'center' ,alignItems:'center'}}><Image source={require('../../../../assets/img/app_icons/Group-402.png')} style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain' }}/></View>
                                 <View style={{margin:2,flex:1 ,justifyContent:'center' ,alignItems:'center'}}><Text style={{textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:10}} >توانایی شما</Text></View>
                                 <View style={{margin:2,flex:1 ,justifyContent:'center' ,alignItems:'center'}}><Text style={{textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:18 ,color:"#8AA9FC"}} >{persify(ability)+'/'+number}</Text></View>
                             </View>
                             <View style={{flex:1}}>
-                                <View style={{margin:2, flex:1 ,justifyContent:'center' ,alignItems:'center'}}><Image source={require('../../../../assets/img/app_icons/unmute.png')} style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain' }}/></View>
+                                <View style={{margin:2, flex:1 ,justifyContent:'center' ,alignItems:'center'}}><Image source={require('../../../../assets/img/app_icons/Group-403.png')} style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain' }}/></View>
                                 <View style={{margin:2,flex:1 ,justifyContent:'center' ,alignItems:'center'}}><Text style={{textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:10}} >دوره های گذرانده شده</Text></View>
                                 <View style={{margin:2,flex:1 ,justifyContent:'center' ,alignItems:'center'}}><Text style={{textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:18 ,color:"#8AA9FC"}} >{persify(passed)}</Text></View>
                             </View>
