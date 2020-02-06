@@ -30,8 +30,9 @@ class Profile extends React.Component{
         //which will result in re-render the text
      }
      onPress(value){
+         console.log(this.props.navigation.state.key)
          if (value == 'form'){
-             this.props.navigation.navigate('Form',{pageName :'profile'});
+             this.props.navigation.navigate('ProfileForm');
          }
      }
 
