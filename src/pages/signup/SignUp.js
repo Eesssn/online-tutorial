@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
-import {Image ,TextInput ,Text ,View , TouchableOpacity,Dimensions} from 'react-native'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import {Image ,TextInput ,Text ,View , TouchableOpacity,Dimensions,BackHandler} from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { AndroidBackHandler } from 'react-navigation-backhandler';
 import styles from './styles';
 import logo from '../../../assets/img/app_icon.png';
 
@@ -38,14 +39,28 @@ class SingUp extends Component {
         })
     }
     onPressLogin = ()=>{
+        counter= 0;
         this.props.navigation.navigate('Master')
     }
     onPressSignUp = ()=>{
+        counter= 0 ;
         this.props.navigation.navigate('Form')
     }
+    onBackButtonPressAndroid = () => {
+        
+    
+        if (true) {
+          // do something
+          console.log('back')
+          BackHandler.exitApp()
+          //return true;
+        }
+        return false;
+      };
 
     render(){
         return(
+            
             <KeyboardAwareScrollView
             
             resetScrollToCoords={{ x: 0, y: 0 }}
@@ -104,6 +119,8 @@ class SingUp extends Component {
       
        
       <View style={{ height: 60 }} />
+      <AndroidBackHandler onBackPress={this.onBackButtonPressAndroid} />
+
     </KeyboardAwareScrollView>
         )
     };
