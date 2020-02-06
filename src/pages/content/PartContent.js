@@ -22,16 +22,7 @@ class BuyCourses extends React.Component{
         }
     }
    
-    componentDidMount() {
-        global.fetch(`https://player.vimeo.com/video/${VIMEO_ID}/config`)
-          .then(res => res.json())
-          .then(res => this.setState({
-            thumbnailUrl: res.video.thumbs['640'],
-            videoUrl: res.request.files.hls.cdns[res.request.files.hls.default_cdn].url,
-            video: res.video,
-          }));
-         
-      }
+   
       onPressheader= ()=>{
         this.props.navigation.goBack();
       }
@@ -42,13 +33,12 @@ class BuyCourses extends React.Component{
             <View style={styles.container}>
               
                <VideoPlayer
-                endWithThumbnail
-                thumbnail={{ uri: this.state.thumbnailUrl }}
-                video={{ uri: this.state.videoUrl }}
-                videoWidth={this.state.video.width}
-                videoHeight={this.state.video.height}
-                duration={this.state.video.duration/* I'm using a hls stream here, react-native-video
-                    can't figure out the length, so I pass it here from the vimeo config */}
+                
+               
+                video={require('../../../assets/video/video.mp4')}
+                videoWidth={640}
+                videoHeight={360}
+               
                 ref={r => this.player = r}
                 // my add
                 controlsTimeout={3000}
