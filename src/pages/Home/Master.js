@@ -8,6 +8,7 @@ import Profile from './view/Profile';
 import Blog from './view/blog/Blog';
 import Courses from './view/courses/Courses';
 import Favorite from './view/favorite/Favorite'
+import BackButtonHandler from './BackButtonHandler';
 
 
 
@@ -17,17 +18,25 @@ class Master extends Component{
         headerShown: false,
     };
 
-    onBackButtonPressAndroid = () => {
+    // onBackButtonPressAndroid = () => {
         
     
-      if (true) {
-        // do something
-        console.log('back')
-        BackHandler.exitApp()
-        //return true;
-      }
-      return false;
-    };
+    //   if (true) {
+    //     // do something
+    //     console.log('back')
+    //     BackHandler.exitApp()
+    //     //return true;
+    //   }
+    //   return false;
+    // };
+
+    componentDidMount() {
+      BackButtonHandler.mount(false, this.props.navigation);
+    }
+  
+    componentWillUnmount() {
+      BackButtonHandler.unmount();
+    }
   
     render(){
         return(
