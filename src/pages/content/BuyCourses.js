@@ -144,11 +144,7 @@ class BuyCourses extends React.Component{
                                        <Text style ={styles.user_text}>{ item.name} | {item.title} </Text>
                                        <Text numberOfLines={2} ellipsizeMode="middle"  style ={styles.comment_text}>{item.coursetext}</Text>
                                        <View style={{flexDirection:"row",marginTop:1,alignItems:'center',justifyContent:'flex-start'}}>
-                                            {/* <View style={{margin:5,borderRadius:5/2, width:5,height:5 , backgroundColor:"#000000"}}/>
-                                            <View style={{margin:5,borderRadius:5/2, width:5,height:5 , backgroundColor:"#000000"}}/>
-                                            <View style={{margin:5,borderRadius:5/2, width:5,height:5 , backgroundColor:"#000000"}}/>
-                                            <View style={{margin:5,borderRadius:5/2, width:5,height:5 , backgroundColor:"#000000"}}/>
-                                            <View style={{margin:5,borderRadius:5/2, width:5,height:5 , backgroundColor:"#000000"}}/> */}
+                                           
                                             <Text style={styles.viewS}>{persify(item.view)}</Text>
                                             <Image source={require('../../../assets/img/app_icons/view.png')}  style={{margin: 2,marginTop:5, width: 10, height: 10 }} />
 
