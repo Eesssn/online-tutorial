@@ -5,27 +5,13 @@ import AppIntroSlider from 'react-native-app-intro-slider';
 
 I18nManager.forceRTL(false);
 
-const styles = StyleSheet.create({
-  mainContent: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'space-around',
-  },
-  title: {
-    padding : 5,
-    textAlign: 'center',
-    color: '#fff',
-    fontFamily:"IRANSansWeb"
-  },
 
-
-});
 
 const slides = [
   {
     key: 'somethun',
     title:'عنوان اول',
-    text:'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. ',
+    text:'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.    ',
     image: require('../../../assets/img/img_intro/1.png'),
       backgroundColor: '#f4f4f4',
       title_style:{ fontFamily:'Lalezar-Regular'},
@@ -63,27 +49,23 @@ class AppIntro extends Component{
 };
 
 _renderItem = ({ item, dimensions }) => (
-  <View style={{ backgroundColor: item.backgroundColor,flex: 1, flexDirection: "column" ,justifyContent :"flex-start" , alignItems: "center"}}>
-<View>
-<Image source={item.image}  style={{width:SCREEN_WIDTH>700?( SCREEN_WIDTH/10*3.5):( SCREEN_WIDTH/10*8), height: SCREEN_WIDTH>700?( SCREEN_WIDTH/10*3.5):( SCREEN_WIDTH/10*8)}} />
-</View>
-<View style={{paddingTop :30}}>
-<Text style={item.title_style}>{item.title}</Text>
-</View>
-<View style={{padding :15,paddingTop : 30 }}>
-<Text style={item.text_style}>{item.text}</Text>
-
-</View>
-</View>
+  <View style={{backgroundColor: item.backgroundColor,flex: 1,flexDirection: "column" ,justifyContent :"flex-start" , alignItems: "center"}}>
+    <View>
+      <Image source={item.image}  style={styles.image_style} />
+    </View>
+    <View style={styles.section}>
+      <View style={{paddingTop :20}}>
+        <Text style={item.title_style}>{item.title}</Text>
+      </View>
+      <View style={{padding :12,paddingTop : 10 }}>
+        <Text numberOfLines={5} ellipsizeMode="tail"  style={item.text_style}>{item.text}</Text>
+      </View>
+    </View>
+  </View>
 );
-   
-
-
- 
-     // 
-      
-    
-
+   componentDidMount(){
+     console.log(Dimensions.get('window').height)
+   }
     render(){
         
         return(
@@ -111,5 +93,29 @@ _renderItem = ({ item, dimensions }) => (
       );
     };
 }
+const styles = StyleSheet.create({
+  mainContent: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  title: {
+    padding : 5,
+    textAlign: 'center',
+    color: '#fff',
+    fontFamily:"IRANSansWeb"
+  },
+  image_style:{
+    width:SCREEN_WIDTH, 
+    height: SCREEN_HEIGHT/10*5
+  },
+  section:{
+    width:SCREEN_WIDTH,
+    height:SCREEN_HEIGHT/10*4,
+    alignItems:"center"
+  }
+
+
+});
 
 export default AppIntro;
