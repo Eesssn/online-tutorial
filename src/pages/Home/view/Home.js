@@ -141,7 +141,9 @@ class Home extends React.Component{
                                         
                                         keyExtractor={(item,index)=> index.toString()}
                                         renderItem ={({item})=>(
-                                            <TouchableOpacity style={styles.chatnf}>
+                                            <TouchableOpacity style={styles.chatnf}
+                                            onPress={() =>{ this.props.navigation.navigate('ChatBox' ,{ChatName:item.chatname})}}
+                                            >
                                                 
                                                 <View style={{
                                                                 flex: .5,
@@ -151,8 +153,8 @@ class Home extends React.Component{
                                                                 justifyContent:"center"
                                                             }}>
                                                                
-                                                                <View style={{flex:6,alignItems:"center",justifyContent:"center", width: 215, height: 30}} > 
-                                                                    <Text numberOfLines={1} ellipsizeMode="middle" style={{textAlign:"center" ,fontFamily:'IRANSansWeb' ,fontSize:9}}>{item.chatname}</Text>
+                                                                <View style={{flex:6,alignItems:"flex-end",justifyContent:"center", width: 200, height: 30}} > 
+                                                                    <Text numberOfLines={1} ellipsizeMode="middle" style={{fontFamily:'IRANSansWeb' ,fontSize:9}}>{item.chatname}</Text>
                                                                 </View>
                                                                 <View style={{flex:1,alignItems:"center",justifyContent:"center", width: 30, height: 30}} >
                                                                     <Image 
@@ -364,7 +366,7 @@ const styles = StyleSheet.create({
                 borderBottomLeftRadius:20 ,
                 borderTopLeftRadius:20, 
                 backgroundColor:"#ffffff" ,
-                width :SCREEN_WIDTH/10*9,
+                width :SCREEN_WIDTH/10*8,
                 height : 35 ,
                 justifyContent :"center" ,
                 alignItems:"flex-end" ,
