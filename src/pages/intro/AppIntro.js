@@ -83,7 +83,6 @@ _renderItem = ({ item, dimensions }) => (
        
           activeDotStyle	={{backgroundColor:'#EDC483'}}
           buttonStyle={{
-           
             height: 45,
             marginTop:1,
             borderRadius:45,
