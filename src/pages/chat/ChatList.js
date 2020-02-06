@@ -101,16 +101,7 @@ class ChatList extends React.Component{
                                                 </View>
                                             </View>
 
-                                            <View style={styles.notif} >
-                                                {item.notifmod == 0 ? (<Image 
-                                                    source={require('../../../assets/img/app_icons/mute.png')}
-                                                    style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain' ,}}
-                                                /> ):(<Image 
-                                                    source={require('../../../assets/img/app_icons/unmute.png')}
-                                                    style={{borderRadius:20/2, width:20,height:20,resizeMode: 'contain' ,}}
-                                                /> )}
-                                                
-                                            </View>
+                                            
                                         </View>
                                     </TouchableOpacity>
                                    

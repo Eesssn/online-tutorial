@@ -14,7 +14,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 
 
-class FormComplet extends Component {
+class ProfileForm extends Component {
     static navigationOptions = {
         // headerTitle instead of title
         
@@ -73,7 +73,7 @@ class FormComplet extends Component {
             contentContainerStyle={styles.container}
             scrollEnabled={false}
           >
-        <>
+         <>
         <Modal
           style={{height: 300, width: 300}}
             presentationStyle= ''
@@ -110,7 +110,7 @@ class FormComplet extends Component {
             </View>
            
           </Modal>
-      <TouchableOpacity style={{marginBottom: 20,marginTop:20, borderRadius:94/2, width:94,height:94, backgroundColor:'#9e9e9e',  alignItems: 'center' ,justifyContent: 'center'}}
+      <TouchableOpacity style={{marginBottom: 10,marginTop:15, borderRadius:94/2, width:94,height:94, backgroundColor:'#9e9e9e',  alignItems: 'center' ,justifyContent: 'center'}}
        onPress={this.handleChosePhoto}>
                 {photo && (
                     <Image
@@ -133,6 +133,12 @@ class FormComplet extends Component {
             <TextInput placeholder ='ایمیل'  keyboardType='email-address' maxLength={11} style={{width: 300,textAlign: 'right',fontFamily:"IRANSansWeb"}}/>
         </View>
 
+        <View style={styles.input_style}>
+        <Image source={require('../../../assets/img/singup/call.png')}  style={{width: 20, height: 20 ,  resizeMode: 'contain', marginLeft :5 ,marginRight:30}} />
+            <TextInput placeholder ='شماره موبایل' keyboardType={'phone-pad'} maxLength={11} style={{width: 300,textAlign: 'right',fontFamily:"IRANSansWeb"}}/>
+        </View>
+        
+
         <TouchableOpacity style={styles.input_style} onPress={() => {
               this.setModalVisible(true);
             }}>
@@ -140,15 +146,12 @@ class FormComplet extends Component {
             <TextInput placeholder ='تاریخ تولد' value={persiandate} editable={false} maxLength={11} style={{width: 300,textAlign: 'right',fontFamily:"IRANSansWeb"}}/>
         </TouchableOpacity>
 
-        <View style={styles.input_style}>
-            <Image source={require('../../../assets/img/app_icons/star.png')}  style={{width: 20, height: 20 ,  resizeMode: 'contain', marginLeft :5 ,marginRight:30}} />
-            <TextInput placeholder ='کد معرف'  keyboardType={'phone-pad'} maxLength={11} style={{width: 300,textAlign: 'right',fontFamily:"IRANSansWeb"}}/>
-        </View>
+       
         
     
         <View style={styles.btn_view_style }>
-            <TouchableOpacity style={styles.btn_login} onPress={this.onPresscontinues}>
-                <Text style={styles.btn_title}> ادامه </Text>
+            <TouchableOpacity style={styles.btn_login} onPress={this.onPressSave}>
+                <Text style={styles.btn_title}> ذخیره </Text>
             </TouchableOpacity>
         </View>
             </View>
@@ -160,4 +163,4 @@ class FormComplet extends Component {
         )
     };
 }
-export default FormComplet;
+export default ProfileForm;

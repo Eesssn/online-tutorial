@@ -2,6 +2,12 @@ import React,{Component} from 'react';
 import { StyleSheet, View, Text, Image, I18nManager, Dimensions } from 'react-native';
 
 import AppIntroSlider from 'react-native-app-intro-slider';
+import { StackActions, NavigationActions } from 'react-navigation';
+const resetAction = StackActions.reset({
+    index: 0,
+    actions: [NavigationActions.navigate({ routeName: 'Details' })],
+});
+
 
 I18nManager.forceRTL(false);
 
@@ -63,9 +69,7 @@ _renderItem = ({ item, dimensions }) => (
     </View>
   </View>
 );
-   componentDidMount(){
-     console.log(Dimensions.get('window').height)
-   }
+  
     render(){
         
         return(
@@ -85,7 +89,8 @@ _renderItem = ({ item, dimensions }) => (
             backgroundColor:'#8AA9FC',
             alignItems:'center'}}
             buttonTextStyle={{fontFamily:"IRANSansWeb" }}
-            onDone={()=>{ this.props.navigation.navigate('Details')}}
+            onDone={()=>{ 
+                          this.props.navigation.dispatch(resetAction)}}
           // hideNextButton
           // hideDoneButton
           // onSkip={() => console.log("skipped")}

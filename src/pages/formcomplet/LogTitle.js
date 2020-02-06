@@ -15,7 +15,10 @@ class LogoTitle extends React.Component {
 
 }
   onPressheader= ()=>{
-    this.props.navigation.goBack();
+   
+   
+      this.props.navigation.goBack();
+   
   }
   render() {
     

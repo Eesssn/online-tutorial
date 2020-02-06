@@ -17,6 +17,7 @@ import HomeScreen from './src/pages/intro/AppIntro';
 import DetailsScreen from './src/pages/signup/SignUp';
 import MasterScreen from './src/pages/Home/Master';
 import FormScreen from './src/pages/formcomplet/FormCopmplet';
+import ProfileFormScreen from './src/pages/formcomplet/ProfileForm'
 import VerificationScreen from './src/pages/verification/VerificationScreen';
 import ForgetPassScreen from './src/pages/forgetpass/ForgetPass'
 import SettingScreen from './src/pages/settings/Setting';
@@ -33,12 +34,14 @@ import AboutMeScreen from './src/pages/settings/AboutMe'
 import SearchScreen from './src/pages/search/Search';
 import MyProfileScreen from './src/pages/profilepages/MyProfile'
 import ViewAllScreen from './src/pages/Home/view/courses/ViewAll' 
+
 const RootStack = createStackNavigator(
   {
     Home: HomeScreen,
     Details: DetailsScreen,
     Master: MasterScreen,
     Form: FormScreen,
+    ProfileForm: ProfileFormScreen,
     Verification : VerificationScreen,
     Forget : ForgetPassScreen,
     Setting : SettingScreen,

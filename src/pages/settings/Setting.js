@@ -40,7 +40,7 @@ class Setting extends Component {
        else if (value == "about"){
          this.props.navigation.navigate('AboutMe') 
        }else if (value == 'exit'){
-        BackHandler.exitApp()
+        this.props.navigation.navigate('Home')
        }
    }
 
