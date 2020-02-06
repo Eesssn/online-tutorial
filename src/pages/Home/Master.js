@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {StyleSheet ,View , TouchableOpacity,Dimensions} from 'react-native'
-import TabBar from "fluidbottomnavigation-rn";
+import TabBar from "../../../local_modules/fluidbottomnavigation-rn";
 import ViewPager from '@react-native-community/viewpager';
 import Home from './view/Home';
 import Profile from './view/Profile';
