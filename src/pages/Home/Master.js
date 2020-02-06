@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {StyleSheet ,View , BackHandler,Dimensions} from 'react-native'
+import {StyleSheet ,View , BackHandler,Dimensions,ToastAndroid} from 'react-native'
 import TabBar from 'fluidbottomnavigation-rn';
 import ViewPager from '@react-native-community/viewpager';
 import { AndroidBackHandler } from 'react-navigation-backhandler';
@@ -8,8 +8,8 @@ import Profile from './view/Profile';
 import Blog from './view/blog/Blog';
 import Courses from './view/courses/Courses';
 import Favorite from './view/favorite/Favorite'
-import BackButtonHandler from './BackButtonHandler';
 
+const counter = 0;
 
 
 
@@ -18,25 +18,29 @@ class Master extends Component{
         headerShown: false,
     };
 
-    // onBackButtonPressAndroid = () => {
+    onBackButtonPressAndroid = () => {
         
     
-    //   if (true) {
-    //     // do something
-    //     console.log('back')
-    //     BackHandler.exitApp()
-    //     //return true;
-    //   }
-    //   return false;
-    // };
+      if (true) {
+        // do something
+        // console.log('back')
+        // BackHandler.exitApp()
+        //return true;
+        if (this.counter > 0) {
+          BackHandler.exitApp();
+        } else {
+          setTimeout(() => {
+            this.counter = 0;
+          }, 3000);
+          this.counter++;
+          ToastAndroid.show('Press again to exit.', ToastAndroid.SHORT);
+          return true;
+        }
+      }
+      return false;
+    };
 
-    componentDidMount() {
-      BackButtonHandler.mount(false, this.props.navigation);
-    }
   
-    componentWillUnmount() {
-      BackButtonHandler.unmount();
-    }
   
     render(){
         return(
