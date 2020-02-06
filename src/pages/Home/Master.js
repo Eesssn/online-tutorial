@@ -1,7 +1,8 @@
 import React,{Component} from 'react';
-import {StyleSheet ,View , TouchableOpacity,Dimensions} from 'react-native'
-import TabBar from "../../../local_modules/fluidbottomnavigation-rn";
+import {StyleSheet ,View , BackHandler,Dimensions} from 'react-native'
+import TabBar from 'fluidbottomnavigation-rn';
 import ViewPager from '@react-native-community/viewpager';
+import { AndroidBackHandler } from 'react-navigation-backhandler';
 import Home from './view/Home';
 import Profile from './view/Profile';
 import Blog from './view/blog/Blog';
@@ -14,6 +15,18 @@ import Favorite from './view/favorite/Favorite'
 class Master extends Component{
     static navigationOptions = {
         headerShown: false,
+    };
+
+    onBackButtonPressAndroid = () => {
+        
+    
+      if (true) {
+        // do something
+        console.log('back')
+        BackHandler.exitApp()
+        //return true;
+      }
+      return false;
     };
   
     render(){
@@ -56,6 +69,8 @@ class Master extends Component{
                 { title: "", icon: require('../../../assets/img/icon/page/Page.png')},
                 { title: "", icon: require('../../../assets/img/icon/heart/heart.png')}
                 ]}/>
+
+            <AndroidBackHandler onBackPress={this.onBackButtonPressAndroid} />
             </View>
         )
     }
