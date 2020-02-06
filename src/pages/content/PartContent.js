@@ -70,7 +70,7 @@ class BuyCourses extends React.Component{
                             <TouchableOpacity style={styles.btn_login} onPress={this.onPressSave}>
 
                                 <Text style={styles.btn_title}> خلاصه مطالب گذشته </Text>
-                                <Image source={require('../../../assets/img/app_icons/bookmark.png')} style={{ width:20,height:20,resizeMode: 'contain' }}/>
+                                <Image source={require('../../../assets/img/app_icons/smz.png')} style={{ width:20,height:20,resizeMode: 'contain' }}/>
                             </TouchableOpacity>
 
                         </View>

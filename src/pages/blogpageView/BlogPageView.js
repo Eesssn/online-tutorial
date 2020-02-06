@@ -7,7 +7,8 @@ import {
   Text,
   View,
   Dimensions,
-  TouchableOpacity
+  TouchableOpacity,
+  Share
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
 const HEADER_MAX_HEIGHT = 200;
@@ -28,20 +29,41 @@ export default class BlogPageView extends Component {
       scrollY: new Animated.Value(0),
     };
   }
+  onShare = async () => {
+    const { navigation } = this.props;
+    try {
+      const result = await Share.share({
+        message:
+        navigation.getParam('title')+'|برای دیدن  این مطلب اپلیکیشن ... از آدرس زیر دانلود کنید '+'| www.vistaapp.ir',
+      });
+
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
   _renderScrollViewContent() {
     const { navigation } = this.props;
     return (
       <View style={styles.scrollViewContent}>
-        <View style={{width:Dimensions.get('window').width , height: 800}}>
+        <View style={{width:Dimensions.get('window').width , height:Dimensions.get('window').height-50}}>
         <View style={{flexDirection:"column"}}>
           <View style={styles.row}><Text style={styles.title}> {navigation.getParam('title')} </Text></View>
           <View ><Text style={styles.text}> {navigation.getParam('text')}</Text></View>
           <View style={{flexDirection: "row" , alignItems:"center", justifyContent:'center',height:40}}>
          
-          <View style={styles.shadow} >
+          <TouchableOpacity style={styles.shadow} >
           <Image source={require('../../../assets/img/app_icons/like.png')} style={{ width:15,height:15,resizeMode: 'contain' }}/>
-          </View>
+          </TouchableOpacity>
           <Text style={styles.text}>مطلب چطور بود؟! دوست داشتید؟</Text>
           
           </View>
@@ -51,7 +73,7 @@ export default class BlogPageView extends Component {
             <View style={{alignItems:'center',justifyContent:"center",backgroundColor:'#707070', width:Dimensions.get('window').width-60,marginTop:5,height:1}}/>
           </View>
           <View style={{flexDirection:'row', alignItems:'center',justifyContent:"center", width:Dimensions.get('window').width,marginTop:25,height:80}}>
-            <TouchableOpacity style={styles.btn_login2} onPress={this.onPressSave}>
+            <TouchableOpacity style={styles.btn_login2}   onPress={this.onShare}>
             
                 <Text style={styles.btn_title}> اشتراک گذاری </Text>
                 <Image source={require('../../../assets/img/app_icons/share.png')} style={{ width:20,height:20123,resizeMode: 'contain' }}/>
